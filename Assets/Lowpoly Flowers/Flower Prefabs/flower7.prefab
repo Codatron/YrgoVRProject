@@ -94,7 +94,8 @@ GameObject:
   - component: {fileID: 4724395142769789043}
   - component: {fileID: 4724395142770559057}
   - component: {fileID: 4724395142771559057}
-  - component: {fileID: 9217197102142743267}
+  - component: {fileID: 8123031005234999523}
+  - component: {fileID: 1237669014808597457}
   m_Layer: 0
   m_Name: pSphere6
   m_TagString: Untagged
@@ -167,8 +168,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &9217197102142743267
-SphereCollider:
+--- !u!65 &8123031005234999523
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -178,8 +179,21 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.02074412
-  m_Center: {x: 9.313226e-10, y: -0.0020546224, z: -0.000000009313226}
+  m_Size: {x: 0.019, y: 0.051488232, z: 0.019}
+  m_Center: {x: 9.313226e-10, y: -0.02, z: -0.000000009313226}
+--- !u!65 &1237669014808597457
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4724395142769300563}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.025, y: 0.001, z: 0.025}
+  m_Center: {x: 9.313226e-10, y: 0.017, z: -0.000000009313226}
 --- !u!1 &4724395142769300565
 GameObject:
   m_ObjectHideFlags: 0

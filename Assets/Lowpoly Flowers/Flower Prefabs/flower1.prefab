@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 6438477812562338062}
   - component: {fileID: 6438477812565762352}
   - component: {fileID: 6438477812564632560}
-  - component: {fileID: 2765679851126870689}
+  - component: {fileID: 3217766358278068464}
   m_Layer: 0
   m_Name: pPipe4
   m_TagString: Untagged
@@ -167,8 +167,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2765679851126870689
-SphereCollider:
+--- !u!65 &3217766358278068464
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -178,7 +178,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.00896137
+  m_Size: {x: 0.019, y: 0.033922743, z: 0.019}
   m_Center: {x: -0.00054591056, y: 0, z: 0}
 --- !u!1 &6438477812562443568
 GameObject:
