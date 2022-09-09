@@ -4,12 +4,6 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public enum BeeState
-{
-    Stationary,
-    Flying
-}
-
 public class HandContoller : MonoBehaviour
 {
     public GameObject body;
