@@ -23,7 +23,6 @@ public class PickUpNectar : MonoBehaviour
 
         if (other.gameObject.CompareTag("LeaveNectar"))
         {
-
             LeaveNectar();
         }
     }
