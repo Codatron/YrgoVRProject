@@ -20,6 +20,12 @@ public class PickUpNectar : MonoBehaviour
             NectarPickUp(1);
             Destroy(other.gameObject, destroyTime);
         }
+
+        if (other.gameObject.CompareTag("LeaveNectar"))
+        {
+
+            LeaveNectar();
+        }
     }
 
     private void NectarPickUp(int nectar)
@@ -28,4 +34,9 @@ public class PickUpNectar : MonoBehaviour
 
         //particeleffect
     }
+    private void LeaveNectar()
+    {
+        sONectar.currentNectar = 0;
+    }
+
 }
