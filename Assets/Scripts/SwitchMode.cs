@@ -5,24 +5,27 @@ using UnityEngine.XR.Management;
 
 public class SwitchMode : MonoBehaviour
 {
-    private void Start()
+    public IEnumerator StartXRCoroutine()
     {
-       
-    }
+        Debug.Log("Initializing XR...");
+        yield return XRGeneralSettings.Instance.Manager.InitializeLoader();
 
-    public void StartXRCoroutine()
-    {
-        //Debug.Log("Initializing XR...");
-        //yield return XRGeneralSettings.Instance.Manager.InitializeLoader();
-
-        //if (XRGeneralSettings.Instance.Manager.activeLoader == null)
-        //{
-        //    Debug.LogError("Initializing XR Failed. Check Editor or Player log for details.");
-        //}
-       
+        if (XRGeneralSettings.Instance.Manager.activeLoader == null)
+        {
+            Debug.LogError("Initializing XR Failed. Check Editor or Player log for details.");
+        }
+        else
+        {
             Debug.Log("Starting XR...");
             XRGeneralSettings.Instance.Manager.StartSubsystems();
-        
+        }
+    }
+
+    void StartXR()
+    {
+        Debug.Log("Starting XR...");
+        XRGeneralSettings.Instance.Manager.StartSubsystems();
+
     }
 
     void StopXR()
@@ -44,7 +47,7 @@ private void Update()
 
         if (Input.GetMouseButtonDown(0))
         {
-            StartXRCoroutine();
+            StartXR();
         }
     }
 }
