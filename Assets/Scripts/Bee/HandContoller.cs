@@ -10,18 +10,14 @@ public class HandContoller : MonoBehaviour
     public GameObject body;
     public ActionBasedController leftController;
     public ActionBasedController rightController;
-
-    [SerializeField] private BeeState beeState;
-    private Vector3 rightControllerPosition;
-    private Quaternion rightControllerRotation;
-    private Vector3 targetForward;
-    private Rigidbody rb;
-
     public Vector3 flightPath;
 
+    [SerializeField] private BeeState beeState;
     [Tooltip("Keep me under 0.5 please.")]
     [SerializeField] private float speed;
     [SerializeField] private float liftForce;
+    private Vector3 targetForward;
+    private Rigidbody rb;
 
     private void Awake()
     {
@@ -38,26 +34,27 @@ public class HandContoller : MonoBehaviour
         if (GetTriggerButton() > 0.1f)
         {
             beeState = BeeState.Flying;
-            //  rb.isKinematic = true;
-            rb.rotation = GetHeadRotation();
-            //rb.velocity = Camera.main.transform.forward.normalized * speed;
-            rb.velocity = GetHeadRotation() * body.transform.forward * speed;
-            //rb.MovePosition(body.transform.localPosition + (GetHeadRotation() * body.transform.forward * speed));
-           
-            flightPath = rb.velocity;
-            rb.AddForce(Vector3.up * liftForce, ForceMode.Impulse);
+
+            if (GetRightThumbAxisValue().y > 0.1f)
+            {
+                speed += GetRightThumbAxisValue().y * 0.02f;
+            }
+            else if (GetRightThumbAxisValue().y > -0.1f)
+            {
+                speed -= GetRightThumbAxisValue().y * 0.02f;
+            }
+
+            Debug.Log(GetRightThumbAxisValue().y);
         }
         else
         {
             beeState = BeeState.NotFlying;
-            rb.isKinematic = false;
             rb.rotation = GetHeadRotation();
         }
 
         if (beeState == BeeState.Flying)
         {
-            //ChangeFlightPathWithController();
-            //ChangeFlightPathWithHeadset();
+            Fly();
         }
 
 
@@ -82,6 +79,11 @@ public class HandContoller : MonoBehaviour
         return head.transform.localRotation;
     }
 
+    private Vector2 GetRightThumbAxisValue()
+    {
+        return rightController.translateAnchorAction.action.ReadValue<Vector2>();
+    }
+
     private void ChangeFlightPathWithController()
     {
         body.transform.localRotation = GetRightControllerRotation();
@@ -94,5 +96,15 @@ public class HandContoller : MonoBehaviour
         body.transform.localRotation = GetHeadRotation();
         targetForward = GetHeadRotation() * body.transform.forward;
         body.transform.localPosition += targetForward * speed * Time.deltaTime;
+    }
+
+    private void Fly()
+    {
+        rb.rotation = GetHeadRotation();
+        //rb.velocity = Camera.main.transform.forward.normalized * speed;
+        rb.velocity = GetHeadRotation() * body.transform.forward * speed;
+        //rb.MovePosition(body.transform.localPosition + (GetHeadRotation() * body.transform.forward * speed));
+        flightPath = rb.velocity;
+        rb.AddForce(Vector3.up * liftForce, ForceMode.Impulse);
     }
 }
