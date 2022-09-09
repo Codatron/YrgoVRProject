@@ -49,7 +49,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GrassTex:
-        m_Texture: {fileID: 2800000, guid: 8250ff09005548d488639d4bfc291cff, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0a3ba5a084ceba648bafc93bf49f9cb6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GroundTex:
@@ -87,14 +87,14 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _FadeDistanceEnd: 26
-    - _FadeDistanceStart: 16
+    - _FadeDistanceStart: 20
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GrassCut: 0
     - _GrassSaturation: 2.65
-    - _GrassShading: 0.127
-    - _GrassThinness: 0.45
+    - _GrassShading: 0.5
+    - _GrassThinness: 0.56
     - _GrassThinnessIntersection: 1.24
     - _Metallic: 0
     - _MinimumNumberStacks: 2
@@ -127,13 +127,13 @@ Material:
     - _UseVR: 1
     - _UseWC: 0
     - _WindForce: 0.22
-    - _WindMovement: 0.2
+    - _WindMovement: 0.05
     - _WorldRotation: 0
     - _WorldScale: 10
     - _ZWrite: 1
     - __NumberOfStacks: 1
     m_Colors:
-    - _Color: {r: 0.6098775, g: 0.7169812, b: 0.58440727, a: 1}
+    - _Color: {r: 0.6036532, g: 0.7075472, b: 0.57671773, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GroundColor: {r: 0.90800005, g: 0.90800005, b: 0.90800005, a: 1}
     - _OffsetVector: {r: 0, g: 0, b: 0, a: 0}
