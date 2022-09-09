@@ -17,11 +17,11 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
-        //newLocation = new Vector3(0.0f, 0.0f, 1.0f);
+        newLocation = new Vector3(0.0f, 0.0f, 1.0f);
     }
 
     void Update()
     {
-        //transform.position += newLocation * speed * Time.deltaTime;
+        transform.position += newLocation * speed * Time.deltaTime;
     }
 }
