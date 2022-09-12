@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Tab : MonoBehaviour
 {
     public delegate void HandleInteraction(Tab tab);
-    public event HandleInteraction OnClick;
+    public event HandleInteraction OnClicked;
 
     public TabStates CurrentState { get => currentState;}
     private TabStates currentState;
@@ -47,7 +47,7 @@ public class Tab : MonoBehaviour
     private void OnMouseDown()
     {
         currentState = TabStates.Clicked;
-        OnClick?.Invoke(this);
+        OnClicked?.Invoke(this);
     }
 
     private void OnMouseExit()
