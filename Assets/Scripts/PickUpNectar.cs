@@ -7,6 +7,7 @@ public class PickUpNectar : MonoBehaviour
 {
     public SONectar sONectar;
     private float destroyTime;
+    public Rigidbody playerRB;
 
     private void Start()
     {
@@ -21,21 +22,22 @@ public class PickUpNectar : MonoBehaviour
             Destroy(other.gameObject, destroyTime);
         }
 
-        //if (other.gameObject.CompareTag("LeaveNectar"))
-        //{
-        //    LeaveNectar();
-        //}
+        if (other.gameObject.CompareTag("LeaveNectar"))
+        {
+            LeaveNectar();
+        }
     }
 
     private void NectarPickUp(int nectar)
     {
         sONectar.currentNectar += nectar;
+        playerRB.drag += 2;
 
         //particeleffect
     }
-    //private void LeaveNectar()
-    //{
-    //    sONectar.currentNectar = 0;
-    //}
+    private void LeaveNectar()
+    {
+        sONectar.currentNectar = 0;
+    }
 
 }
