@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Button
   - WindArea
+  - Flower
   layers:
   - Default
   - TransparentFX
