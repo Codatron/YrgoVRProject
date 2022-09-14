@@ -23,7 +23,7 @@ public class PlayerInWind : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "WindArea")
+        if (other.gameObject.CompareTag("WindArea"))
         { 
             windZone = other.gameObject;
             inWindZoon = true;
@@ -32,7 +32,7 @@ public class PlayerInWind : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "WindArea")
+        if (other.gameObject.CompareTag("WindArea"))
         {
             inWindZoon = false;
         }

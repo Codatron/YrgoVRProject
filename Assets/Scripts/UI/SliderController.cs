@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 public class SliderController : MonoBehaviour
 {
-    Slider slider;
+    public Slider slider;
     public SONectar sONectar;
 
     void Start()
     {
-        slider = GetComponent<Slider>();
+        
     }
 
     // Update is called once per frame

@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d381dbbee307e714c87127dc276f937f, type: 3}
   m_Name: New SO Nectar
   m_EditorClassIdentifier: 
+  maxNectar: 3
+  currentNectar: 1

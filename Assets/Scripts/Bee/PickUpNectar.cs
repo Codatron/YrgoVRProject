@@ -19,7 +19,7 @@ public class PickUpNectar : MonoBehaviour
         destroyTime = 0.2f;
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Flower")) //&& playerRB.velocity.magnitude < maxSpeed) //ar det har ratt?
         {
@@ -28,14 +28,15 @@ public class PickUpNectar : MonoBehaviour
 
         if (other.gameObject.CompareTag("Nectar"))
         {
+            Debug.Log("I'm collecting nectar");
             NectarPickUp(1);
             Destroy(other.gameObject, destroyTime);
         }
 
-        if (other.gameObject.CompareTag("LeaveNectar"))
-        {
-            LeaveNectar();
-        }
+        //if (other.gameObject.CompareTag("LeaveNectar"))
+        //{
+        //    LeaveNectar();
+        //}
     }
 
     private void NectarPickUp(int nectar)
@@ -44,10 +45,11 @@ public class PickUpNectar : MonoBehaviour
         playerRB.drag += 2;
 
     }
-    private void LeaveNectar()
-    {
-        sONectar.currentNectar = 0;
-    }
+
+    //private void LeaveNectar()
+    //{
+    //    sONectar.currentNectar = 0;
+    //}
 
     //void GetParticalEffect()
     //{

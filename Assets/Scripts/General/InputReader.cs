@@ -57,18 +57,18 @@ public class InputReader : MonoBehaviour
     private void InitializeInputReader()
     {
         InputDevices.GetDevices(inputDevices);
-        InputDeviceCharacteristics rightControllerCharacteristics = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
-        InputDevices.GetDevicesWithCharacteristics(rightControllerCharacteristics, inputDevices);
+        //InputDeviceCharacteristics rightControllerCharacteristics = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
+        //InputDevices.GetDevicesWithCharacteristics(rightControllerCharacteristics, inputDevices);
 
         foreach (var item in inputDevices)
         {
             Debug.Log(item.name + " " + item.characteristics);
         }
 
-        if (inputDevices.Count > 0)
-        {
-            targetDevice = inputDevices[0];
-        }
+        //if (inputDevices.Count > 0)
+        //{
+        //    targetDevice = inputDevices[0];
+        //}
     }
 
     private void OnDeviceConnected(InputDevice device)
