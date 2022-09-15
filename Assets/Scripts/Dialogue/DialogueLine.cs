@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace DialogueSystem
 {
     public class DialogueLine : DialogueBaseClass
     {
         private TextMeshProUGUI textHolder;
+        public ActionBasedController actionBasedController;
 
         [Header("Text Options")]
         [SerializeField, TextArea] private string input;
@@ -38,7 +41,7 @@ namespace DialogueSystem
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space)) //|| handContoller.GetRightTrigger() > 0.1f)
             {
                 if (textHolder.text != input)
                 {
