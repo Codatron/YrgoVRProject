@@ -9,21 +9,20 @@ using UnityEngine.InputSystem;
 
 public class HandContoller : MonoBehaviour
 {
+    [Header("XR Devices")]
     public Camera head;
     public GameObject body;
     public ActionBasedController leftController;
     public ActionBasedController rightController;
-    public Vector3 flightPath;
-    public GameObject handOffset;
-
+    
+    [Header("State")]
     [SerializeField] private BeeState beeState;
+
+    [Header("Flight Settings")]
     [Tooltip("Keep me under 0.5 please.")]
     [SerializeField] private float speed;
-    //[SerializeField] private float liftForce;
-    //[SerializeField] private float dragForce;
     [SerializeField] private float liftDrag;
     [SerializeField] private float gravitationalDrag;
-    [SerializeField] private float rotationSpeed = 45.0f;
     [SerializeField] Vector3 controllerOffset;
 
     private Rigidbody rb;
@@ -43,36 +42,51 @@ public class HandContoller : MonoBehaviour
         SetControllerLocalPositionToHeadsetOrigin();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (GetRightTrigger() > 0.1f)
+        if (!IsBeeGrounded())
         {
-            if (IsBeeGrounded())
-                IncreaseAltitude();
-            else
-                IncreaseAltitude();
-        }
-        else if (GetLeftTrigger() > 0.1f)
-        {
-            if (IsBeeGrounded())
-                return;
-            else
-                DecreaseAltitude();
-        }
-        else if (GetRightTrigger() == 0.0f && GetLeftTrigger() == 0.0f)
-        {
-            beeState = BeeState.Hovering;
+            Fly();
         }
 
-        if (IsBeeGrounded())
+        if (GetRightTrigger() > 0.1f)
         {
-            beeState = BeeState.Grounded;
+            IncreaseAltitude();
         }
-        else
+        else if (GetLeftTrigger() > 0.1f && !IsBeeGrounded())
         {
-            beeState = BeeState.Flying;
-            //Fly();
+            DecreaseAltitude();
         }
+
+
+        //if (GetRightTrigger() > 0.1f)
+        //{
+        //    if (IsBeeGrounded())
+        //        IncreaseAltitude();
+        //    else
+        //        IncreaseAltitude();
+        //}
+        //else if (GetLeftTrigger() > 0.1f)
+        //{
+        //    if (IsBeeGrounded())
+        //        return;
+        //    else
+        //        DecreaseAltitude();
+        //}
+        //else if (GetRightTrigger() == 0.0f && GetLeftTrigger() == 0.0f)
+        //{
+        //    beeState = BeeState.Hovering;
+        //}
+
+        //if (IsBeeGrounded())
+        //{
+        //    beeState = BeeState.Grounded;
+        //}
+        //else
+        //{
+        //    beeState = BeeState.Flying;
+        //    //Fly();
+        //}
 
         //Debug.Log("");
     }
@@ -93,8 +107,12 @@ public class HandContoller : MonoBehaviour
         {
             movement = direction.normalized * speed * Time.deltaTime;
         }
-
-        rb.velocity = movement;
+        else if (distanceFromControllerToHeadset <= 0.15f && distanceFromControllerToHeadset >= 0.05f)
+        {
+            movement = Vector3.zero;
+        }
+        
+        rb.AddForce(movement, ForceMode.VelocityChange);
     }
 
     private void SetControllerLocalPositionToHeadsetOrigin()
@@ -105,15 +123,15 @@ public class HandContoller : MonoBehaviour
 
     private void IncreaseAltitude()
     {
-        rb.drag = liftDrag;
+        //rb.drag = liftDrag;
         float thrust = Mathf.Clamp(GetRightTrigger(), 0.1f, 0.35f);
         rb.AddForce(Vector3.up * thrust, ForceMode.Impulse);
     }
 
     private void DecreaseAltitude()
     {
-        rb.drag = gravitationalDrag;
-        float thrust = Mathf.Clamp(GetRightTrigger(), 0.1f, 0.35f);
+        //rb.drag = gravitationalDrag;
+        float thrust = Mathf.Clamp(GetRightTrigger(), 0.1f, 0.15f);
         rb.AddForce(Vector3.down * thrust, ForceMode.Impulse);
     }
 
