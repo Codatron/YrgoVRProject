@@ -14,7 +14,7 @@ namespace DialogueSystem
         }
         private void Update()
         {
-            if (Input.GetKey(KeyCode.Escape))
+            if (Input.GetKey(KeyCode.Escape)) // andra input
             {
                 Deactivate();
                 gameObject.SetActive(false);
@@ -45,6 +45,8 @@ namespace DialogueSystem
                 transform.GetChild(i).gameObject.SetActive(false);
             }
         }
+
+       
     }
 
 }
