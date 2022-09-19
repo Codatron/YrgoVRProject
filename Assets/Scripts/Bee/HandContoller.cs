@@ -10,55 +10,59 @@ using UnityEngine.InputSystem;
 public class HandContoller : MonoBehaviour
 {
     [Header("XR Devices")]
-    public Camera head;
+    private Camera mainCamera;
     public GameObject body;
     public ActionBasedController leftController;
     public ActionBasedController rightController;
-    
+
     [Header("State")]
     [SerializeField] private BeeState beeState;
 
     [Header("Flight Settings")]
     [Tooltip("Keep me under 0.5 please.")]
-    [SerializeField] private float speed;
+    [SerializeField] private float flySpeed;
     [SerializeField] private float liftDrag;
     [SerializeField] private float gravitationalDrag;
     [SerializeField] Vector3 controllerOffset;
 
     private Rigidbody rb;
     private Collider originCollider;
-    private Vector3 direction;
-    private Vector3 movement;
+    //private Vector3 direction;
+    //private Vector3 movement;
     private float distanceToGround;
+
+    private VRInput vrInput;
+    private Movement newMovement;
+
+    private float thrust;
 
     private void Awake()
     {
         rb = body.GetComponent<Rigidbody>();
         originCollider = body.GetComponent<Collider>();
+
+        vrInput = new VRInput(rightController, leftController);
+        newMovement = new Movement(rb);
     }
 
     private void Start()
     {
-        SetControllerLocalPositionToHeadsetOrigin();
+        mainCamera = Camera.main;
+        SetControllerLocalPositionToHeadsetOrigin(controllerOffset);
     }
 
     private void FixedUpdate()
     {
         if (!IsBeeGrounded())
-        {
-            Fly();
-        }
+            newMovement.Fly(GetFlyingDirection(), flySpeed);
 
-        if (GetRightTrigger() > 0.1f)
-        {
-            IncreaseAltitude();
-        }
-        else if (GetLeftTrigger() > 0.1f && !IsBeeGrounded())
-        {
-            DecreaseAltitude();
-        }
+        if (vrInput.GetRightTrigger() > 0.1f)
+            newMovement.ChangeAltitude(Vector3.up, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));
 
+        else if (vrInput.GetLeftTrigger() > 0.1f && !IsBeeGrounded())
+            newMovement.ChangeAltitude(Vector3.down, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .15f));
 
+        #region OldCode
         //if (GetRightTrigger() > 0.1f)
         //{
         //    if (IsBeeGrounded())
@@ -89,6 +93,7 @@ public class HandContoller : MonoBehaviour
         //}
 
         //Debug.Log("");
+        #endregion
     }
 
     private bool IsBeeGrounded()
@@ -97,65 +102,68 @@ public class HandContoller : MonoBehaviour
         return Physics.Raycast(transform.position, -Vector3.up, distanceToGround + 0.15f); ;
     }
 
-    private void Fly()
+    //private void Fly()
+    //{
+    //    direction = (rightController.transform.localPosition + leftController.transform.localPosition) - mainCamera.transform.localPosition;
+
+    //    float distanceFromControllerToHeadset = direction.magnitude;
+
+    //    if (distanceFromControllerToHeadset > 0.15f)
+    //    {
+    //        movement = direction.normalized * flySpeed * Time.deltaTime;
+    //    }
+    //    else if (distanceFromControllerToHeadset <= 0.15f && distanceFromControllerToHeadset >= 0.05f)
+    //    {
+    //        movement = Vector3.zero;
+    //    }
+
+    //    rb.AddForce(movement, ForceMode.VelocityChange);
+    //}
+    private float ClampedTriggerValue(float triggerInput, float min, float max)
     {
-        direction = (rightController.transform.localPosition + leftController.transform.localPosition) - head.transform.localPosition;
-
-        float distanceFromControllerToHeadset = direction.magnitude;
-
-        if (distanceFromControllerToHeadset > 0.15f)
-        {
-            movement = direction.normalized * speed * Time.deltaTime;
-        }
-        else if (distanceFromControllerToHeadset <= 0.15f && distanceFromControllerToHeadset >= 0.05f)
-        {
-            movement = Vector3.zero;
-        }
-        
-        rb.AddForce(movement, ForceMode.VelocityChange);
+        return Mathf.Clamp(triggerInput, min, max);
+    }
+    private void SetControllerLocalPositionToHeadsetOrigin(Vector3 offset)
+    {
+        rightController.transform.localPosition = mainCamera.transform.localPosition + offset;
+        leftController.transform.localPosition = mainCamera.transform.localPosition + offset;
+    }
+    private Vector3 GetFlyingDirection()
+    {
+        return (rightController.transform.localPosition + leftController.transform.localPosition) - mainCamera.transform.localPosition;
     }
 
-    private void SetControllerLocalPositionToHeadsetOrigin()
-    {
-        rightController.transform.localPosition = head.transform.localPosition + controllerOffset;
-        leftController.transform.localPosition = head.transform.localPosition + controllerOffset;
-    }
+    //private void IncreaseAltitude()
+    //{
+    //    //rb.drag = liftDrag;
+    //    float thrust = Mathf.Clamp(vrInput.GetRightTrigger(), 0.1f, 0.35f);
+    //    rb.AddForce(Vector3.up * thrust, ForceMode.Impulse);
+    //}
 
-    private void IncreaseAltitude()
-    {
-        //rb.drag = liftDrag;
-        float thrust = Mathf.Clamp(GetRightTrigger(), 0.1f, 0.35f);
-        rb.AddForce(Vector3.up * thrust, ForceMode.Impulse);
-    }
+    //private void DecreaseAltitude()
+    //{
+    //    //rb.drag = gravitationalDrag;
+    //    float thrust = Mathf.Clamp(vrInput.GetRightTrigger(), 0.1f, 0.15f);
+    //    rb.AddForce(Vector3.down * thrust, ForceMode.Impulse);
+    //}
 
-    private void DecreaseAltitude()
-    {
-        //rb.drag = gravitationalDrag;
-        float thrust = Mathf.Clamp(GetRightTrigger(), 0.1f, 0.15f);
-        rb.AddForce(Vector3.down * thrust, ForceMode.Impulse);
-    }
+    //private float GetRightTrigger() => rightController.activateAction.action.ReadValue<float>();
 
-    private Quaternion GetHeadRotation() => head.transform.localRotation;
+    //private float GetLeftTrigger() => leftController.activateAction.action.ReadValue<float>();
 
-    private Vector3 GetHeadPosition() => head.transform.localPosition;
+    //private float GetRightGrip() => rightController.selectAction.action.ReadValue<float>();
 
-    private float GetRightTrigger() => rightController.activateAction.action.ReadValue<float>();
+    //private float GetLeftGrip() => leftController.selectAction.action.ReadValue<float>();
 
-    private float GetLeftTrigger() => leftController.activateAction.action.ReadValue<float>();
+    //private Vector2 GetRightThumbAxis() => rightController.translateAnchorAction.action.ReadValue<Vector2>();
 
-    private float GetRightGrip() => rightController.selectAction.action.ReadValue<float>();
+    //private Vector2 GetLeftThumbAxis() => leftController.rotateAnchorAction.action.ReadValue<Vector2>();
 
-    private float GetLeftGrip() => leftController.selectAction.action.ReadValue<float>();
- 
-    private Vector2 GetRightThumbAxis() => rightController.translateAnchorAction.action.ReadValue<Vector2>();
+    //private Quaternion GetRightControllerRotation() => rightController.rotationAction.action.ReadValue<Quaternion>();
 
-    private Vector2 GetLeftThumbAxis() => leftController.rotateAnchorAction.action.ReadValue<Vector2>();
+    //private Quaternion GetLeftControllerRotation() => leftController.rotationAction.action.ReadValue<Quaternion>();
 
-    private Quaternion GetRightControllerRotation() => rightController.rotationAction.action.ReadValue<Quaternion>();
+    //private Vector3 GetRightControllerPosition() => rightController.positionAction.action.ReadValue<Vector3>();
 
-    private Quaternion GetLeftControllerRotation() => leftController.rotationAction.action.ReadValue<Quaternion>();
-
-    private Vector3 GetRightControllerPosition() => rightController.positionAction.action.ReadValue<Vector3>();
-
-    private Vector3 GetLeftControllerPosition() => leftController.positionAction.action.ReadValue<Vector3>();
+    //private Vector3 GetLeftControllerPosition() => leftController.positionAction.action.ReadValue<Vector3>();
 }

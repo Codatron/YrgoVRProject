@@ -3,25 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
-// What this script does:
-// Should be obvious by the class name.
-// This was only a test script to get a feel for constant movement within VR,
-//      so it can be built upon or discarded depending on requirements.
-
-public class Movement : MonoBehaviour
+public class Movement
 {
-    private Vector3 newLocation;
+    private Rigidbody target;
 
-    [Tooltip("Keep me under 0.5 please.")]
-    [SerializeField] private float speed;
-
-    void Start()
+    public Movement(Rigidbody targetRigidbody)
     {
-        newLocation = new Vector3(0.0f, 0.0f, 1.0f);
+        target = targetRigidbody;
     }
 
-    void Update()
+    public void ChangeAltitude(Vector3 direction, float thrust)
     {
-        transform.position += newLocation * speed * Time.deltaTime;
+        target.AddForce(direction * thrust, ForceMode.Impulse);
+    }
+
+    public void Fly(Vector3 inputDirection, float flySpeed)
+    {
+        Vector3 movement = Vector3.zero;
+
+        if (inputDirection.magnitude > .15f)
+            movement = inputDirection.normalized * flySpeed * Time.deltaTime;
+
+        else if (inputDirection.magnitude <= 0.15f && inputDirection.magnitude >= 0.05f)
+            movement = Vector3.zero;
+
+        target.AddForce(movement, ForceMode.VelocityChange);
     }
 }

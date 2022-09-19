@@ -19,7 +19,6 @@ public class InputReader : MonoBehaviour
     private float timer;
     private float timeToNextDeviceConnectionCheck = 30.0f;
     private InputDevice targetDevice;
-    public ActionBasedController actionMap;
 
     private void OnEnable()
     {
