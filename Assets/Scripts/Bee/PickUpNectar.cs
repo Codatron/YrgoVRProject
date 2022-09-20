@@ -6,8 +6,9 @@ using UnityEngine;
 public class PickUpNectar : MonoBehaviour
 {
     public SONectar sONectar;
+
     private float destroyTime;
-    public Rigidbody playerRB;
+    private Rigidbody playerRB;
 
     private void Start()
     {
@@ -16,7 +17,6 @@ public class PickUpNectar : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.gameObject.CompareTag("Nectar"))
         {
             Debug.Log("I'm collecting nectar");
@@ -33,8 +33,7 @@ public class PickUpNectar : MonoBehaviour
     private void NectarPickUp(int nectar)
     {
         sONectar.currentNectar += nectar;
-        playerRB.drag += 2;
-
+        //playerRB.drag += 2;
     }
 
     //private void LeaveNectar()
