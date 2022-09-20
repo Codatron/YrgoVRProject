@@ -11,7 +11,7 @@ public class LoadScenInBackground : MonoBehaviour
     void Start()
     {
         //Call the LoadButton() function when the user clicks this Button
-        m_Button.onClick.AddListener(LoadButton);
+       // m_Button.onClick.AddListener(LoadButton);
     }
 
     void LoadButton()
