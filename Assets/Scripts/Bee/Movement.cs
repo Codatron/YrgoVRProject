@@ -22,7 +22,7 @@ public class Movement
         Vector3 movement = Vector3.zero;
 
         if (inputDirection.magnitude > .15f)
-            movement = inputDirection.normalized * flySpeed * Time.deltaTime;
+            movement = inputDirection.normalized * inputDirection.magnitude * flySpeed * Time.deltaTime;
 
         else if (inputDirection.magnitude <= 0.15f && inputDirection.magnitude >= 0.05f)
             movement = Vector3.zero;

@@ -4401,7 +4401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913555298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.87, y: 5, z: 0}
+  m_LocalPosition: {x: 8.87, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4442,7 +4442,7 @@ MonoBehaviour:
   leftController: {fileID: 420017771}
   rightController: {fileID: 875354276}
   beeState: 0
-  flySpeed: 0
+  flySpeed: 15
   liftDrag: 5
   gravitationalDrag: 2
   controllerOffset: {x: 0, y: 0, z: 0}

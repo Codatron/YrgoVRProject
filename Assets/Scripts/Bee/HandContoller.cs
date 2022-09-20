@@ -21,14 +21,10 @@ public class HandContoller : MonoBehaviour
     [Header("Flight Settings")]
     [Tooltip("Keep me under 0.5 please.")]
     [SerializeField] private float flySpeed;
-    [SerializeField] private float liftDrag;
-    [SerializeField] private float gravitationalDrag;
     [SerializeField] Vector3 controllerOffset;
 
     private Rigidbody rb;
     private Collider originCollider;
-    //private Vector3 direction;
-    //private Vector3 movement;
     private float distanceToGround;
 
     private VRInput vrInput;
