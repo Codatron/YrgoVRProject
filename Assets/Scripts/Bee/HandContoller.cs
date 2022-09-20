@@ -21,16 +21,15 @@ public class HandContoller : MonoBehaviour
     [Header("Flight Settings")]
     [Tooltip("Keep me under 0.5 please.")]
     [SerializeField] private float flySpeed;
+    [SerializeField] private float groundSpeed;
     [SerializeField] Vector3 controllerOffset;
     public GameObject handSetOffset;
 
     private Rigidbody rb;
     private Collider originCollider;
     private float distanceToGround;
-
     private VRInput vrInput;
     private Movement newMovement;
-
     private float thrust;
 
     private void Awake()
@@ -52,6 +51,9 @@ public class HandContoller : MonoBehaviour
     {
         if (!IsBeeGrounded())
             newMovement.Fly(GetFlyingDirection(), flySpeed);
+
+        if (IsBeeGrounded())
+            newMovement.Crawl(GetFlyingDirection(), groundSpeed);
 
         if (vrInput.GetRightTrigger() > 0.1f)
             newMovement.ChangeAltitude(Vector3.up, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));
@@ -120,11 +122,13 @@ public class HandContoller : MonoBehaviour
     {
         return Mathf.Clamp(triggerInput, min, max);
     }
+
     private void SetControllerLocalPositionToHeadsetOrigin(Vector3 offset)
     {
         rightController.transform.localPosition = mainCamera.transform.localPosition + offset;
         leftController.transform.localPosition = mainCamera.transform.localPosition + offset;
     }
+
     private Vector3 GetFlyingDirection()
     {
         return (rightController.transform.localPosition + leftController.transform.localPosition) - mainCamera.transform.localPosition;

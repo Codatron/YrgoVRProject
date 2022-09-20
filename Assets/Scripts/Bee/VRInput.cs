@@ -12,7 +12,11 @@ public class VRInput
     {
         this.rightController = rightController;
         this.leftController = leftController;
+
+        
     }
+
+    
 
     //  RIGHT CONTROLLER
     public float GetRightTrigger() => rightController.activateAction.action.ReadValue<float>();

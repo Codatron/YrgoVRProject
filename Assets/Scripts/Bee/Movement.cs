@@ -29,4 +29,21 @@ public class Movement
 
         target.AddForce(movement, ForceMode.VelocityChange);
     }
+
+    public void Crawl(Vector3 inputDirection, float groundSpeed)
+    {
+        Vector3 movement = Vector3.zero;
+
+        if (inputDirection.magnitude > .15f)
+        {
+            movement.y = 0.0f;
+            movement = inputDirection.normalized * groundSpeed * Time.deltaTime;
+        }
+        else if (inputDirection.magnitude <= 0.15f && inputDirection.magnitude >= 0.05f)
+        {
+            movement = Vector3.zero;
+        }
+
+        target.AddForce(movement, ForceMode.VelocityChange);
+    }
 }

@@ -15,12 +15,12 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 0
-  m_FogColor: {r: 1, g: 0.9333334, b: 0.5019608, a: 1}
+  m_FogColor: {r: 1, g: 0.9579862, b: 0.68613154, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.5377358, g: 0.05275897, b: 0.05275897, a: 1}
+  m_AmbientSkyColor: {r: 0.7086773, g: 0.4030408, b: 0.4030408, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -3091,7 +3091,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.8962264, g: 0.10484154, b: 0.61998856, a: 1}
+  m_Color: {r: 0.93254715, g: 0.418147, b: 0.7529926, a: 1}
   m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
@@ -3149,7 +3149,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: -0.061628457, y: 0.70441604, z: 0.70441604, w: 0.061628457}
+  m_LocalRotation: {x: 0.026932623, y: 0.9474375, z: -0.30784106, w: 0.0828901}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4617,7 +4617,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913555298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.73}
+  m_LocalPosition: {x: 0, y: 1.86, z: 2.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4659,7 +4659,8 @@ MonoBehaviour:
   leftController: {fileID: 420017771}
   rightController: {fileID: 875354276}
   beeState: 0
-  flySpeed: 15
+  flySpeed: 20
+  groundSpeed: 10
   controllerOffset: {x: 0, y: 0, z: 0}
   handSetOffset: {fileID: 491940844}
 --- !u!135 &913555303
@@ -14583,7 +14584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directionalLight: {fileID: 705507994}
   preset: {fileID: 11400000, guid: 1a59f64bc2369854981b663ab2e8d408, type: 2}
-  timeOfDay: 0
+  timeOfDay: 8.4
 --- !u!4 &1775777888
 Transform:
   m_ObjectHideFlags: 0
