@@ -29,8 +29,8 @@ namespace DialogueSystem
         //[SerializeField] private Image imageHolder;
 
         private Coroutine lineAppear;
-        private ActionBasedController rightController;
-        private ActionBasedController leftController;
+        public ActionBasedController rightController;
+        public ActionBasedController leftController;
 
         private void Awake()
         {
@@ -47,6 +47,8 @@ namespace DialogueSystem
 
         private void Update()
         {
+            // ToDo:
+            // Change dialogue with button
             if (vRInput.GetRightGrip() > 0.1f)
             {
                 if (textHolder.text != input)

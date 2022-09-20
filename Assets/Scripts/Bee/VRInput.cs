@@ -16,8 +16,6 @@ public class VRInput
         
     }
 
-    
-
     //  RIGHT CONTROLLER
     public float GetRightTrigger() => rightController.activateAction.action.ReadValue<float>();
     public float GetRightGrip() => rightController.selectAction.action.ReadValue<float>();

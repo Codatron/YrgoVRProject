@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class ButtonController : MonoBehaviour
 {
@@ -7,6 +8,20 @@ public class ButtonController : MonoBehaviour
     private GameObject dialogue;
     [SerializeField] 
     private GameObject button;
+
+    // ToDo:
+    // Turn off upward thrust during dialogues/in beehive/etc;
+    // How? Add new GameState? bool? 
+    // Or...use primary button instead of tirgger button
+    private VRInput vrInput;
+    private ActionBasedController rightController;
+    private ActionBasedController leftController;
+
+    private void Awake()
+    {
+        vrInput = new VRInput(rightController, leftController);    
+    }
+
     //TextMeshProUGUI
     private void Start()
     {
