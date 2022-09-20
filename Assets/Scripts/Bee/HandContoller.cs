@@ -22,6 +22,7 @@ public class HandContoller : MonoBehaviour
     [Tooltip("Keep me under 0.5 please.")]
     [SerializeField] private float flySpeed;
     [SerializeField] Vector3 controllerOffset;
+    public GameObject handSetOffset;
 
     private Rigidbody rb;
     private Collider originCollider;
