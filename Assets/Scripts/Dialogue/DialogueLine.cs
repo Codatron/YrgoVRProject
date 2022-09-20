@@ -10,6 +10,7 @@ namespace DialogueSystem
 {
     public class DialogueLine : DialogueBaseClass
     {
+        private VRInput vRInput;
         private TextMeshProUGUI textHolder;
         public ActionBasedController actionBasedController;
 
@@ -28,10 +29,15 @@ namespace DialogueSystem
         //[SerializeField] private Image imageHolder;
 
         private Coroutine lineAppear;
+        private ActionBasedController rightController;
+        private ActionBasedController leftController;
+
         private void Awake()
         {
             //imageHolder.sprite = characterSprite;
             //imageHolder.preserveAspect = true;
+
+            vRInput = new VRInput(rightController, leftController);
         }
         private void Start()
         {
@@ -41,7 +47,7 @@ namespace DialogueSystem
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space)) //|| handContoller.GetRightTrigger() > 0.1f)
+            if (vRInput.GetRightGrip() > 0.1f)
             {
                 if (textHolder.text != input)
                 {
