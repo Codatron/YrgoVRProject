@@ -12,6 +12,7 @@ public class PlayParticalEffect : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Flower")) //&& playerRB.velocity.magnitude < maxSpeed)
+        { 
             nectarParticleSystem.Play();
         }
     }
