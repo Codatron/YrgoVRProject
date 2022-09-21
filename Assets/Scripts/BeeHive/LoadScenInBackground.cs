@@ -23,7 +23,6 @@ public class LoadScenInBackground : MonoBehaviour
     void LoadButton()
     {
         StartCoroutine(LoadScene());
-
     }
 
     IEnumerator LoadScene()
