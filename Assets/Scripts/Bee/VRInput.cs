@@ -22,6 +22,7 @@ public class VRInput
     public Vector2 GetRightThumbAxis() => rightController.translateAnchorAction.action.ReadValue<Vector2>();
     public Quaternion GetRightControllerRotation() => rightController.rotationAction.action.ReadValue<Quaternion>();
     public Vector3 GetRightControllerPosition() => rightController.positionAction.action.ReadValue<Vector3>();
+    public float GetRightPrimaryButtonUI() => rightController.uiPressAction.action.ReadValue<float>();
 
     //  LEFT CONTROLLER
     public float GetLeftTrigger() => leftController.activateAction.action.ReadValue<float>();
@@ -29,4 +30,6 @@ public class VRInput
     public Vector2 GetLeftThumbAxis() => leftController.rotateAnchorAction.action.ReadValue<Vector2>();
     public Quaternion GetLeftControllerRotation() => leftController.rotationAction.action.ReadValue<Quaternion>();
     public Vector3 GetLeftControllerPosition() => leftController.positionAction.action.ReadValue<Vector3>();
+    public float GetLefttPrimaryButtonUI() => leftController.uiPressAction.action.ReadValue<float>();
+
 }

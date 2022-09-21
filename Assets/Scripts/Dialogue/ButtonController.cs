@@ -29,7 +29,7 @@ public class ButtonController : MonoBehaviour
     }
 
     private void OnEnable()
-    {     
+    {
         StartGame.beginGame += TurnOnButton;
     }
 

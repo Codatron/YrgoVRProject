@@ -98,7 +98,7 @@ public class HandContoller : MonoBehaviour
     private bool IsBeeGrounded()
     {
         distanceToGround = originCollider.bounds.extents.y;
-        return Physics.Raycast(transform.position, -Vector3.up, distanceToGround + 0.15f); ;
+        return Physics.Raycast(transform.position, -Vector3.up, distanceToGround + 0.25f); ;
     }
 
     //private void Fly()
@@ -125,13 +125,16 @@ public class HandContoller : MonoBehaviour
 
     private void SetControllerLocalPositionToHeadsetOrigin(Vector3 offset)
     {
-        rightController.transform.localPosition = mainCamera.transform.localPosition + offset;
-        leftController.transform.localPosition = mainCamera.transform.localPosition + offset;
+        // Use mainCamera.transform.localPosition instead of handSetOffset.transform.localPosition to minimize motion sickness
+        // In that case, remove the child offset from the camera game object
+        rightController.transform.localPosition = handSetOffset.transform.localPosition + offset;
+        leftController.transform.localPosition = handSetOffset.transform.localPosition + offset;
     }
 
     private Vector3 GetFlyingDirection()
     {
-        return (rightController.transform.localPosition + leftController.transform.localPosition) - mainCamera.transform.localPosition;
+        // use mainCamera.transform.localPosition instead of handSetOffset.transform.localPosition to minimize motion sickness
+        return (rightController.transform.localPosition + leftController.transform.localPosition) - handSetOffset.transform.localPosition;
     }
 
     //private void IncreaseAltitude()

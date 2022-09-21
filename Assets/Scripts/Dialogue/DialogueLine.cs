@@ -49,7 +49,7 @@ namespace DialogueSystem
         {
             // ToDo:
             // Change dialogue with button
-            if (vRInput.GetRightGrip() > 0.1f)
+            if (vRInput.GetRightPrimaryButtonUI() > 0.1f)
             {
                 if (textHolder.text != input)
                 {

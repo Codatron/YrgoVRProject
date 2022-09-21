@@ -36,8 +36,8 @@ public class Movement
 
         if (inputDirection.magnitude > .15f)
         {
-            movement.y = 0.0f;
             movement = inputDirection.normalized * groundSpeed * Time.deltaTime;
+            movement.y = 0.0f;
         }
         else if (inputDirection.magnitude <= 0.15f && inputDirection.magnitude >= 0.05f)
         {
