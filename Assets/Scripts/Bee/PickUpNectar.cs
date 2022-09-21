@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PickUpNectar : MonoBehaviour
 {
-    public SONectar sONectar;
+    public SONectar nectarSO;
 
     private float destroyTime;
     private Rigidbody playerRB;
@@ -32,7 +32,7 @@ public class PickUpNectar : MonoBehaviour
 
     private void NectarPickUp(int nectar)
     {
-        sONectar.currentNectar += nectar;
+        nectarSO.currentNectar += nectar;
         //playerRB.drag += 2;
     }
 

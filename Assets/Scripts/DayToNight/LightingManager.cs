@@ -27,7 +27,6 @@ public class LightingManager : MonoBehaviour
             //UpdateLighting(timeOfDay/24f);                 
             UpdateLighting(8.4f);
         }
-
         else
         {
             UpdateLighting(timeOfDay / 24f);
