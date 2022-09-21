@@ -1,16 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.InputSystem;
 
 namespace DialogueSystem
 {
     public class DialogueLine : DialogueBaseClass
     {
-        private VRInput vRInput;
         private TextMeshProUGUI textHolder;
         public ActionBasedController actionBasedController;
 
@@ -29,15 +25,14 @@ namespace DialogueSystem
         //[SerializeField] private Image imageHolder;
 
         private Coroutine lineAppear;
-        public ActionBasedController rightController;
-        public ActionBasedController leftController;
+        private XRIDefaultInputActions inputActions;
+        //private InputAction dialogueContinue;
 
         private void Awake()
         {
             //imageHolder.sprite = characterSprite;
             //imageHolder.preserveAspect = true;
-
-            vRInput = new VRInput(rightController, leftController);
+            inputActions = new XRIDefaultInputActions();         
         }
         private void Start()
         {
@@ -47,9 +42,10 @@ namespace DialogueSystem
 
         private void Update()
         {
+            
             // ToDo:
             // Change dialogue with button
-            if (vRInput.GetRightPrimaryButtonUI() > 0.1f)
+            if (inputActions.XRIRightHandInteraction.UIPress.triggered)
             {
                 if (textHolder.text != input)
                 {
