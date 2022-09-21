@@ -4,6 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class LoadScenInBackground : MonoBehaviour
 {
+    GoToFlying goToFlying;
+
+    private void Start()
+    {
+        goToFlying = FindObjectOfType<GoToFlying>();
+    }
     private void OnEnable()
     {
         StartGame.beginGame += LoadButton;
@@ -29,16 +35,15 @@ public class LoadScenInBackground : MonoBehaviour
 
         //Don't let the Scene activate until you allow it to
         asyncOperation.allowSceneActivation = false;
-        Debug.Log("Pro :" + asyncOperation.progress);
+
         while (!asyncOperation.isDone)
         {
             // Check if the load has finished
             if (asyncOperation.progress >= 0.9f)
             {
-                Debug.Log("Press the space bar to continue");
+                Debug.Log("Loading done");
 
-                //Wait to you press the space key to activate the Scene
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (goToFlying.hej)
                     //Activate the Scene
                     asyncOperation.allowSceneActivation = true;
             }
