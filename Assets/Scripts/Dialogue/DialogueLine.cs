@@ -26,8 +26,6 @@ namespace DialogueSystem
 
         private Coroutine lineAppear;
         private XRIDefaultInputActions inputActions;
-        //private InputAction dialogueContinue;
-        bool uiPressPerformed = false;
 
         private void Awake()
         {

@@ -13,16 +13,7 @@ public class ButtonController : MonoBehaviour
     // Turn off upward thrust during dialogues/in beehive/etc;
     // How? Add new GameState? bool? 
     // Or...use primary button instead of tirgger button
-    private VRInput vrInput;
-    private ActionBasedController rightController;
-    private ActionBasedController leftController;
 
-    private void Awake()
-    {
-        vrInput = new VRInput(rightController, leftController);    
-    }
-
-    //TextMeshProUGUI
     private void Start()
     {
         button.SetActive(false);
