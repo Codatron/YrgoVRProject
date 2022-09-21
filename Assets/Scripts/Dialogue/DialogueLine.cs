@@ -27,13 +27,19 @@ namespace DialogueSystem
         private Coroutine lineAppear;
         private XRIDefaultInputActions inputActions;
         //private InputAction dialogueContinue;
+        bool uiPressPerformed = false;
 
         private void Awake()
         {
             //imageHolder.sprite = characterSprite;
             //imageHolder.preserveAspect = true;
-            inputActions = new XRIDefaultInputActions();         
+            inputActions = new XRIDefaultInputActions();
         }
+
+        private void OnEnable() => inputActions.Enable();
+
+        private void OnDisable() => inputActions.Disable();
+
         private void Start()
         {
             ResetLine();
@@ -42,9 +48,6 @@ namespace DialogueSystem
 
         private void Update()
         {
-            
-            // ToDo:
-            // Change dialogue with button
             if (inputActions.XRIRightHandInteraction.UIPress.triggered)
             {
                 if (textHolder.text != input)

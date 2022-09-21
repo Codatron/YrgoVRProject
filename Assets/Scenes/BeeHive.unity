@@ -796,13 +796,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e43d0959d8fca1409f36452fec1a8d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionBasedController: {fileID: 0}
+  actionBasedController: {fileID: 1697996134}
   input: Hej!
   delay: 0.2
   delayBetweenLines: 0
   sound: {fileID: 0}
-  rightController: {fileID: 1697996134}
-  leftController: {fileID: 1329513470}
 --- !u!114 &825216085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7188,13 +7186,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e43d0959d8fca1409f36452fec1a8d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionBasedController: {fileID: 0}
+  actionBasedController: {fileID: 1697996134}
   input: Hej hej
   delay: 0.2
   delayBetweenLines: 0
   sound: {fileID: 0}
-  rightController: {fileID: 1697996134}
-  leftController: {fileID: 1329513470}
 --- !u!114 &1436068647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7978,13 +7974,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e43d0959d8fca1409f36452fec1a8d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionBasedController: {fileID: 0}
+  actionBasedController: {fileID: 1697996134}
   input: "Hej hall\xE5"
   delay: 0.2
   delayBetweenLines: 0
   sound: {fileID: 0}
-  rightController: {fileID: 1697996134}
-  leftController: {fileID: 1329513470}
 --- !u!114 &1709684846
 MonoBehaviour:
   m_ObjectHideFlags: 0
