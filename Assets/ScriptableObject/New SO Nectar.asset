@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxNectar: 5
   currentNectar: 0
+  totalNectar: 10

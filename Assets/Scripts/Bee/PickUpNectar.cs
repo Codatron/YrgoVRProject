@@ -2,43 +2,52 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class PickUpNectar : MonoBehaviour
 {
     public SONectar nectarSO;
+    public ActionBasedController leftController;
+    public ActionBasedController rightController;
 
     private float destroyTime;
-    private Rigidbody playerRB;
+    private Rigidbody rb;
+    private VRInput vrInput;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+        vrInput = new VRInput(rightController, leftController);
+    }
 
     private void Start()
     {
-        destroyTime = 0.2f;
+        nectarSO.currentNectar = 0;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Nectar"))
+        if (vrInput.GetRightGrip() > 0.1f || vrInput.GetLeftGrip() > 0.1f)
         {
-            Debug.Log("I'm collecting nectar");
-            NectarPickUp(1);
-            Destroy(other.gameObject, destroyTime);
+            if (other.gameObject.CompareTag("Nectar"))
+            {
+                NectarPickUp(1);
+                Destroy(other.gameObject);
+            }
         }
-
-        //if (other.gameObject.CompareTag("LeaveNectar"))
-        //{
-        //    LeaveNectar();
-        //}
     }
 
     private void NectarPickUp(int nectar)
     {
         nectarSO.currentNectar += nectar;
-        //playerRB.drag += 2;
+        Debug.Log("I'm collecting nectar:" + nectarSO.currentNectar);
+
+        // Change State???
+        IncreaseWeight();
     }
 
-    //private void LeaveNectar()
-    //{
-    //    sONectar.currentNectar = 0;
-    //}
-
+    private void IncreaseWeight()
+    {
+        rb.mass += 2;
+    }
 }

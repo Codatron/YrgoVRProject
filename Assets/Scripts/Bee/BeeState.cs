@@ -2,5 +2,7 @@ public enum BeeState
 {
     Grounded,
     Flying,
-    Hovering
+    BearingLoad,
+    Hovering,
+    OnFlower
 }

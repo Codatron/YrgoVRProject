@@ -7,4 +7,5 @@ public class SONectar : ScriptableObject
 {
     public int maxNectar;
     public int currentNectar;
+    public int totalNectar;
 }
