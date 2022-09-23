@@ -15,8 +15,8 @@ public class HandContoller : MonoBehaviour
     public ActionBasedController leftController;
     public ActionBasedController rightController;
 
-    [Header("State")]
-    [SerializeField] private BeeState beeState;
+    //[Header("State")]
+    //[SerializeField] private BeeState beeState;
 
     [Header("Flight Settings")]
     [Tooltip("Keep me under 0.5 please.")]
@@ -28,9 +28,10 @@ public class HandContoller : MonoBehaviour
     private Rigidbody rb;
     private Collider originCollider;
     private float distanceToGround;
+
     private VRInput vrInput;
     private Movement newMovement;
-    private float thrust;
+    private BeeStateSwitcher stateSwitcher;
 
     private void Awake()
     {
@@ -39,6 +40,7 @@ public class HandContoller : MonoBehaviour
 
         vrInput = new VRInput(rightController, leftController);
         newMovement = new Movement(rb);
+        stateSwitcher = new BeeStateSwitcher(BeeState.Grounded);
     }
 
     private void Start()
@@ -49,17 +51,42 @@ public class HandContoller : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!IsBeeGrounded())
-            newMovement.Fly(GetFlyingDirection(), flySpeed);
-
-        if (IsBeeGrounded())
-            newMovement.Crawl(GetFlyingDirection(), groundSpeed);
+        stateSwitcher.CurrentBeeState = IsBeeGrounded() ? stateSwitcher.CurrentBeeState = BeeState.Grounded : stateSwitcher.CurrentBeeState = BeeState.Flying;
 
         if (vrInput.GetRightTrigger() > 0.1f)
-            newMovement.ChangeAltitude(Vector3.up, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));
-
+            stateSwitcher.CurrentBeeState = BeeState.Lifting;
         else if (vrInput.GetLeftTrigger() > 0.1f && !IsBeeGrounded())
-            newMovement.ChangeAltitude(Vector3.down, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .15f));
+            stateSwitcher.CurrentBeeState = BeeState.Decending;
+
+        switch (stateSwitcher.CurrentBeeState)
+        {
+            case BeeState.Grounded:
+                newMovement.Crawl(GetFlyingDirection(), groundSpeed);
+                newMovement.ChangeAltitude(Vector3.up, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));
+                break;
+            case BeeState.Flying:
+                newMovement.Fly(GetFlyingDirection(), flySpeed);
+                break;
+            case BeeState.Hovering:
+                break;
+            case BeeState.OnFlower:
+                newMovement.Crawl(GetFlyingDirection(), groundSpeed);
+                newMovement.ChangeAltitude(Vector3.up, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));
+                break;
+            case BeeState.Lifting:
+                newMovement.ChangeAltitude(Vector3.up, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));
+                newMovement.Fly(GetFlyingDirection(), flySpeed);
+                break;
+            case BeeState.Decending:
+                newMovement.ChangeAltitude(Vector3.down, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .15f));
+                newMovement.Fly(GetFlyingDirection(), flySpeed);
+                break;
+            case BeeState.CarryingPollen:
+                newMovement.Fly(GetFlyingDirection(), flySpeed);
+                break;
+            default:
+                break;
+        }
 
 
         #region OldCode
