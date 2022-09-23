@@ -4,5 +4,8 @@ public enum BeeState
     Flying,
     BearingLoad,
     Hovering,
-    OnFlower
+    OnFlower,
+    Lifting,
+    Descending,
+    CarryingPollen
 }

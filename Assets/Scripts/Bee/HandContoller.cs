@@ -56,7 +56,7 @@ public class HandContoller : MonoBehaviour
         if (vrInput.GetRightTrigger() > 0.1f)
             stateSwitcher.CurrentBeeState = BeeState.Lifting;
         else if (vrInput.GetLeftTrigger() > 0.1f && !IsBeeGrounded())
-            stateSwitcher.CurrentBeeState = BeeState.Decending;
+            stateSwitcher.CurrentBeeState = BeeState.Descending;
 
         switch (stateSwitcher.CurrentBeeState)
         {
@@ -77,7 +77,7 @@ public class HandContoller : MonoBehaviour
                 newMovement.ChangeAltitude(Vector3.up, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));
                 newMovement.Fly(GetFlyingDirection(), flySpeed);
                 break;
-            case BeeState.Decending:
+            case BeeState.Descending:
                 newMovement.ChangeAltitude(Vector3.down, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .15f));
                 newMovement.Fly(GetFlyingDirection(), flySpeed);
                 break;
