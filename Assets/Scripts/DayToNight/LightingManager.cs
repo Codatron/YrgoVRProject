@@ -14,9 +14,6 @@ public class LightingManager : MonoBehaviour
     public float timeOfDay;
 
     float exposure;
-    //float exposureTo = 1f;
-
-
     public AnimationCurve animCurv;
 
     //maxtid/currenttid kanske tvärtom
@@ -32,18 +29,12 @@ public class LightingManager : MonoBehaviour
             return;
         }
 
-        if (Application.isPlaying)
-        {
             timeOfDay += Time.deltaTime;
             timeOfDay %= 24; //clamp between 0-24
+
             UpdateLighting(timeOfDay/24f);
             UpdateSkybox(timeOfDay / 24f);
-        }
-        else
-        {
-            UpdateLighting(timeOfDay / 24f);
-            UpdateSkybox(timeOfDay / 24f);
-        }      
+          
     }
 
     private void UpdateLighting(float timePercent)
@@ -60,30 +51,9 @@ public class LightingManager : MonoBehaviour
 
     void UpdateSkybox(float timePerence)
     {
-
         exposure = animCurv.Evaluate(timePerence*24);
         RenderSettings.skybox.SetFloat("_Exposure", exposure);
     }
-
-    //Debug.Log(timePerence);
-
-    //    if (timePerence < 0.5f)
-    //    {
-    //        exposure = 0.4f;
-    //        exposure = Mathf.Lerp(exposure, exposureTo,timePerence);
-    //        RenderSettings.skybox.SetFloat("_Exposure", exposure);
-    //    }
-
-    //    if (timePerence > 0.5f)
-
-    //    {
-    //        exposure = 0.4f;
-            
-    //        exposure = Mathf.Lerp(exposureTo, exposure, timePerence);
-    //        Debug.Log(exposure);
-    //        RenderSettings.skybox.SetFloat("_Exposure", exposure);
-    //    }
-    //}
 
     private void OnValidate()
     {
