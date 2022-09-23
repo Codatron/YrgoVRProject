@@ -15,18 +15,18 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 0
-  m_FogColor: {r: 1, g: 0.9579862, b: 0.68613154, a: 1}
+  m_FogColor: {r: 1, g: 0.993265, b: 0.9496855, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.7086773, g: 0.4030408, b: 0.4030408, a: 1}
+  m_AmbientSkyColor: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0.56
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 3789c9b433a78a44fb85d44e0e1bd96a, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -3091,7 +3091,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.93254715, g: 0.418147, b: 0.7529926, a: 1}
+  m_Color: {r: 1, g: 0.9685534, b: 0.988947, a: 1}
   m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
@@ -3149,7 +3149,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.026932623, y: 0.9474375, z: -0.30784106, w: 0.0828901}
+  m_LocalRotation: {x: -0.061628457, y: 0.70441604, z: 0.70441604, w: 0.061628457}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4715,7 +4715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42ac396705a8014d8b203800dc8887d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sONectar: {fileID: 11400000, guid: 4c141b44fa080314190316454ed46a29, type: 2}
+  nectarSO: {fileID: 0}
 --- !u!1 &922166136
 GameObject:
   m_ObjectHideFlags: 0
@@ -8596,7 +8596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42ac396705a8014d8b203800dc8887d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sONectar: {fileID: 11400000, guid: 4c141b44fa080314190316454ed46a29, type: 2}
+  nectarSO: {fileID: 0}
 --- !u!1 &1635779631
 GameObject:
   m_ObjectHideFlags: 0
@@ -14563,6 +14563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1775777888}
   - component: {fileID: 1775777887}
+  - component: {fileID: 1775777889}
   m_Layer: 0
   m_Name: LightingManager
   m_TagString: Untagged
@@ -14584,7 +14585,85 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directionalLight: {fileID: 705507994}
   preset: {fileID: 11400000, guid: 1a59f64bc2369854981b663ab2e8d408, type: 2}
-  timeOfDay: 8.4
+  timeOfDay: 0
+  animCurv:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.4
+      inSlope: 0.120000005
+      outSlope: 0.120000005
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 5
+      value: 1
+      inSlope: 0.060000002
+      outSlope: 0.060000002
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 5.814923
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 11.60153
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 15.854435
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 17.683538
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 19
+      value: 1
+      inSlope: -0.060000002
+      outSlope: -0.060000002
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 24
+      value: 0.4
+      inSlope: -0.120000005
+      outSlope: -0.120000005
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1775777888
 Transform:
   m_ObjectHideFlags: 0
@@ -14600,6 +14679,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1775777889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775777886}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34932634aa9d7cc4c90f109b2ea96e93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exposure: 0.4
+  interval: 2
+  timeOfDay: 24
+  isMorning: 1
 --- !u!1 &1796292837
 GameObject:
   m_ObjectHideFlags: 0
@@ -15562,7 +15657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42ac396705a8014d8b203800dc8887d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sONectar: {fileID: 11400000, guid: 4c141b44fa080314190316454ed46a29, type: 2}
+  nectarSO: {fileID: 0}
 --- !u!1 &1989095404
 GameObject:
   m_ObjectHideFlags: 0
