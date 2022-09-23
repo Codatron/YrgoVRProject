@@ -43,6 +43,16 @@ public class HandContoller : MonoBehaviour
         stateSwitcher = new BeeStateSwitcher(BeeState.Grounded);
     }
 
+    private void OnEnable()
+    {
+        NectarDropOff.onNectarDrop += RestoreDrag;
+    }
+
+    private void OnDisable()
+    {
+        NectarDropOff.onNectarDrop -= RestoreDrag;
+    }
+
     private void Start()
     {
         mainCamera = Camera.main;
@@ -53,36 +63,31 @@ public class HandContoller : MonoBehaviour
     {
         stateSwitcher.CurrentBeeState = IsBeeGrounded() ? stateSwitcher.CurrentBeeState = BeeState.Grounded : stateSwitcher.CurrentBeeState = BeeState.Flying;
 
-        if (vrInput.GetRightTrigger() > 0.1f)
-            stateSwitcher.CurrentBeeState = BeeState.Lifting;
-        else if (vrInput.GetLeftTrigger() > 0.1f && !IsBeeGrounded())
-            stateSwitcher.CurrentBeeState = BeeState.Descending;
-
         switch (stateSwitcher.CurrentBeeState)
         {
             case BeeState.Grounded:
-                newMovement.Crawl(GetFlyingDirection(), groundSpeed);
-                newMovement.ChangeAltitude(Vector3.up, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));
+               if (vrInput.GetRightTrigger() > 0.1f)
+                    newMovement.ChangeAltitude(Vector3.up, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));
                 break;
             case BeeState.Flying:
                 newMovement.Fly(GetFlyingDirection(), flySpeed);
+                if (vrInput.GetRightTrigger() > 0.1f)
+                    newMovement.ChangeAltitude(Vector3.up, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));    
+                else if (vrInput.GetLeftTrigger() > 0.1f && !IsBeeGrounded())
+                    newMovement.ChangeAltitude(Vector3.down, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .15f));
                 break;
             case BeeState.Hovering:
                 break;
             case BeeState.OnFlower:
-                newMovement.Crawl(GetFlyingDirection(), groundSpeed);
-                newMovement.ChangeAltitude(Vector3.up, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));
-                break;
-            case BeeState.Lifting:
-                newMovement.ChangeAltitude(Vector3.up, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));
-                newMovement.Fly(GetFlyingDirection(), flySpeed);
-                break;
-            case BeeState.Descending:
-                newMovement.ChangeAltitude(Vector3.down, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .15f));
-                newMovement.Fly(GetFlyingDirection(), flySpeed);
+                if (vrInput.GetRightTrigger() > 0.1f)
+                    newMovement.ChangeAltitude(Vector3.up, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));
                 break;
             case BeeState.CarryingPollen:
                 newMovement.Fly(GetFlyingDirection(), flySpeed);
+                if (vrInput.GetRightTrigger() > 0.1f)
+                    newMovement.ChangeAltitude(Vector3.up, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));
+                else if (vrInput.GetLeftTrigger() > 0.1f && !IsBeeGrounded())
+                    newMovement.ChangeAltitude(Vector3.down, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));
                 break;
             default:
                 break;
@@ -146,5 +151,15 @@ public class HandContoller : MonoBehaviour
     {
         // use mainCamera.transform.localPosition instead of handSetOffset.transform.localPosition to minimize motion sickness
         return (rightController.transform.localPosition + leftController.transform.localPosition) - mainCamera.transform.localPosition;
+    }
+
+    public void IncreaseDrag(float dragIncrease)
+    {
+        rb.drag += dragIncrease;
+    }
+
+    private void RestoreDrag()
+    {
+        rb.drag = 5.0f;
     }
 }

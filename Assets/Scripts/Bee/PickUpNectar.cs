@@ -10,19 +10,32 @@ public class PickUpNectar : MonoBehaviour
     public ActionBasedController leftController;
     public ActionBasedController rightController;
 
-    private float destroyTime;
-    private Rigidbody rb;
+    private HandContoller handController;
     private VRInput vrInput;
+    private BeeStateSwitcher stateSwitcher; 
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        handController = GetComponent<HandContoller>();
         vrInput = new VRInput(rightController, leftController);
+        stateSwitcher = new BeeStateSwitcher(BeeState.Grounded); ;
     }
 
     private void Start()
     {
         nectarSO.currentNectar = 0;
+    }
+
+    private void Update()
+    {
+        if (nectarSO.currentNectar != 0)
+        {
+            stateSwitcher.CurrentBeeState = BeeState.CarryingPollen;
+        }
+        else
+        {
+            stateSwitcher.CurrentBeeState = BeeState.Grounded;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,6 +45,7 @@ public class PickUpNectar : MonoBehaviour
             if (other.gameObject.CompareTag("Nectar"))
             {
                 NectarPickUp(1);
+                handController.IncreaseDrag(1);
                 Destroy(other.gameObject);
             }
         }
@@ -40,14 +54,6 @@ public class PickUpNectar : MonoBehaviour
     private void NectarPickUp(int nectar)
     {
         nectarSO.currentNectar += nectar;
-        Debug.Log("I'm collecting nectar:" + nectarSO.currentNectar);
-
-        // Change State???
-        IncreaseWeight();
-    }
-
-    private void IncreaseWeight()
-    {
-        rb.mass += 2;
+        Debug.Log("I'm collecting nectar: " + nectarSO.currentNectar);
     }
 }
