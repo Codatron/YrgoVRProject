@@ -9,17 +9,27 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject menuPause;
     bool showPauseMenu = true;
+    private PausMenu inputActions;
 
     void Start()
     {
         DisplayPauseMenu();
     }
 
-    public void PauseButtonPressed(InputAction.CallbackContext context)
+    private void OnEnable() => inputActions.Enable();
+
+    private void OnDisable() => inputActions.Disable();
+
+    private void Awake()
     {
-        if (context.performed)
+        inputActions = new PausMenu();
+    }
+    private void Update()
+    {
+        if (inputActions.Menu.MenuPressed.triggered)
         {
             DisplayPauseMenu();
+
         }
     }
 
