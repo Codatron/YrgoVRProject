@@ -140,6 +140,7 @@ public class HandContoller : MonoBehaviour
     }
 
     private void SetControllerLocalPositionToHeadsetOrigin(Vector3 offset)
+
     {
         // Use mainCamera.transform.localPosition instead of handSetOffset.transform.localPosition to minimize motion sickness
         // In that case, remove the child offset from the camera game object

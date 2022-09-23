@@ -18,7 +18,7 @@ public class PickUpNectar : MonoBehaviour
     {
         handController = GetComponent<HandContoller>();
         vrInput = new VRInput(rightController, leftController);
-        stateSwitcher = new BeeStateSwitcher(BeeState.Grounded); ;
+        stateSwitcher = new BeeStateSwitcher(BeeState.Grounded);
     }
 
     private void Start()
