@@ -1,0 +1,34 @@
+{
+    "name": "PausMenu",
+    "maps": [
+        {
+            "name": "Menu",
+            "id": "a1425c05-33fd-49ce-811e-e9134c4fe6ba",
+            "actions": [
+                {
+                    "name": "MenuPressed",
+                    "type": "Button",
+                    "id": "b6882bc2-54aa-4983-a81f-d1c468ee9720",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d0c52ca9-f457-452b-9b8e-13ddd039d119",
+                    "path": "<OpenVROculusTouchController>/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
