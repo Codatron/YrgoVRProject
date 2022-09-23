@@ -8,44 +8,40 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject menuPause;
-    bool showPauseMenu = true;
+    bool showPauseMenu = false;
     private PausMenu inputActions;
 
-    void Start()
+    private void OnEnable()
     {
-        DisplayPauseMenu();
+        inputActions.Enable();
+        inputActions.Menu.MenuPressed.performed += DisplayPauseMenu;
     }
 
-    private void OnEnable() => inputActions.Enable();
-
-    private void OnDisable() => inputActions.Disable();
+    private void OnDisable()
+    {
+        inputActions.Disable();
+        inputActions.Menu.MenuPressed.performed -= DisplayPauseMenu;
+    }
 
     private void Awake()
     {
         inputActions = new PausMenu();
-    }
-    private void Update()
-    {
-        if (inputActions.Menu.MenuPressed.triggered)
-        {
-            DisplayPauseMenu();
-
-        }
+        Time.timeScale = 1;
     }
 
-    public void DisplayPauseMenu()
+    public void DisplayPauseMenu(InputAction.CallbackContext value)
     {
-        if (showPauseMenu)
-        {
-            menuPause.SetActive(false);
-            showPauseMenu = false;
-            Time.timeScale = 1;
-        }
+        showPauseMenu = !showPauseMenu;
 
         if (!showPauseMenu)
         {
+            menuPause.SetActive(false);
+            Time.timeScale = 1;
+        }
+
+        if (showPauseMenu)
+        {
             menuPause.SetActive(true);
-            showPauseMenu = true;
             Time.timeScale = 0;
         }
     }
