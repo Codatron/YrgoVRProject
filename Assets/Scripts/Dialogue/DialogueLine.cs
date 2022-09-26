@@ -8,7 +8,6 @@ namespace DialogueSystem
     public class DialogueLine : DialogueBaseClass
     {
         private TextMeshProUGUI textHolder;
-        public ActionBasedController actionBasedController;
 
         [Header("Text Options")]
         [SerializeField, TextArea] private string input;

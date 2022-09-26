@@ -11,6 +11,9 @@ public class NectarDropOff : MonoBehaviour
 
     [SerializeField] private SONectar nectarSO;
     [SerializeField] private int totalNectarCollected;
+    [SerializeField] private GameObject dialouge1;
+    [SerializeField] private GameObject dialouge2;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,6 +28,7 @@ public class NectarDropOff : MonoBehaviour
             if (nectarSO.currentNectar >= nectarSO.totalNectar)
             {
                 Debug.Log("You have fulfilled your duty as a worker bee. Well done.");
+                dialouge1.SetActive(true);
             }
 
             //if (nectarSO.currentNectar >= nectarSO.maxNectar)
@@ -37,6 +41,7 @@ public class NectarDropOff : MonoBehaviour
             if (nectarSO.currentNectar < nectarSO.maxNectar)
             {
                 Debug.Log("You do not have enough nectar. Go get more!");
+                dialouge2.SetActive(true);
             }
         }
     }
