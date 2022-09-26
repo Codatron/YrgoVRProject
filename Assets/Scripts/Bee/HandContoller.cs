@@ -57,6 +57,7 @@ public class HandContoller : MonoBehaviour
     {
         mainCamera = Camera.main;
         SetControllerLocalPositionToHeadsetOrigin(controllerOffset);
+        
     }
 
     private void FixedUpdate()
