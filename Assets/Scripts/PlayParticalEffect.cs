@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayParticalEffect : MonoBehaviour
 {
     public Rigidbody playerRB;
-    public ParticleSystem nectarParticleSystem;
+    [SerializeField]
+    private ParticleSystem nectarParticleSystem;
+    [SerializeField]
+    private ParticleSystem WindParticleSystem;
     [SerializeField]
     private float maxSpeed;
 
@@ -14,6 +17,11 @@ public class PlayParticalEffect : MonoBehaviour
         if (other.gameObject.CompareTag("Flower")) //&& playerRB.velocity.magnitude < maxSpeed)
         { 
             nectarParticleSystem.Play();
+        }
+
+        if (other.gameObject.CompareTag("WindArea")) //&& playerRB.velocity.magnitude < maxSpeed)
+        {
+            WindParticleSystem.Play();
         }
     }
 }
