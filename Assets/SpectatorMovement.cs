@@ -6,9 +6,7 @@ public class SpectatorMovement : MonoBehaviour
 {
     public AnimationCurve accelerationCurve;
 
-    public float movementSpeed;
-    private float maxSpeed = 100;
-    private float currentSpeed;
+    private float movementSpeed;
 
     float horizontalInput;
     float verticalInput;
@@ -27,9 +25,10 @@ public class SpectatorMovement : MonoBehaviour
         isFlying = Input.GetKey(KeyCode.Space);
 
         movementDirection = isFlying ? new Vector3(horizontalInput, 1, verticalInput) : new Vector3(horizontalInput, 0, verticalInput);
+        movementDirection.Normalize();
 
-        speedPercentage = transform.position.magnitude / maxSpeed;
+        movementSpeed = accelerationCurve.Evaluate(movementDirection.magnitude);
 
-        transform.position += movementDirection * accelerationCurve.Evaluate(speedPercentage) * movementSpeed * Time.deltaTime;
+        transform.position += movementDirection * movementSpeed * Time.deltaTime;
     }
 }
