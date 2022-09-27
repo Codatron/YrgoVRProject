@@ -32,7 +32,9 @@ public class HandContoller : MonoBehaviour
     private VRInput vrInput;
     private Movement newMovement;
     private BeeStateSwitcher stateSwitcher;
-
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip beeFlightClip;
+    
     private void Awake()
     {
         rb = body.GetComponent<Rigidbody>();
@@ -41,6 +43,7 @@ public class HandContoller : MonoBehaviour
         vrInput = new VRInput(rightController, leftController);
         newMovement = new Movement(rb);
         stateSwitcher = new BeeStateSwitcher(BeeState.Grounded);
+        audioSource.playOnAwake = false;
     }
 
     private void OnEnable()
@@ -57,7 +60,6 @@ public class HandContoller : MonoBehaviour
     {
         mainCamera = Camera.main;
         SetControllerLocalPositionToHeadsetOrigin(controllerOffset);
-        
     }
 
     private void FixedUpdate()
@@ -69,6 +71,7 @@ public class HandContoller : MonoBehaviour
             case BeeState.Grounded:
                if (vrInput.GetRightTrigger() > 0.1f)
                     newMovement.ChangeAltitude(Vector3.up, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));
+                audioSource.Stop();
                 break;
             case BeeState.Flying:
                 newMovement.Fly(GetFlyingDirection(), flySpeed);
@@ -76,6 +79,11 @@ public class HandContoller : MonoBehaviour
                     newMovement.ChangeAltitude(Vector3.up, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));    
                 else if (vrInput.GetLeftTrigger() > 0.1f && !IsBeeGrounded())
                     newMovement.ChangeAltitude(Vector3.down, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .15f));
+                if (beeFlightClip != null && !IsBeeGrounded())
+                    if (!audioSource.isPlaying)
+                        SFXHandler.Play(audioSource, beeFlightClip);
+                else
+                    Debug.Log("No audio clip");
                 break;
             case BeeState.Hovering:
                 break;
