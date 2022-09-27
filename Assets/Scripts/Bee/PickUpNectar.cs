@@ -38,11 +38,11 @@ public class PickUpNectar : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (vrInput.GetRightGrip() > 0.1f || vrInput.GetLeftGrip() > 0.1f)
+        if (other.gameObject.CompareTag("Nectar"))
         {
-            if (other.gameObject.CompareTag("Nectar"))
+            if (vrInput.GetRightGrip() > 0.1f || vrInput.GetLeftGrip() > 0.1f)
             {
                 NectarPickUp(1);
                 handController.IncreaseDrag(1);
