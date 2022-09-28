@@ -82,8 +82,6 @@ public class HandContoller : MonoBehaviour
                 if (beeFlightClip != null && !IsBeeGrounded())
                     if (!audioSource.isPlaying)
                         SFXHandler.Play(audioSource, beeFlightClip);
-                else
-                    Debug.Log("No audio clip");
                 break;
             case BeeState.Hovering:
                 break;

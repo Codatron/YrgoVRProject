@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class SONectar : ScriptableObject
 {
-    public int maxNectar;
-    public int currentNectar;
-    public int totalNectar;
+    public int maxNectarToCollect;
+    public int currentNectar = 0;
+    public int totalNectarCollected = 0;
 }

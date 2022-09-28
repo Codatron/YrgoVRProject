@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1474936986}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: -0.15, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41,10 +41,10 @@ AudioSource:
   m_GameObject: {fileID: 1474936986}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8428698190263087473, guid: c01f9cf236333bb4f8b8f5b6be53df7e, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -53,7 +53,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 5
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -88,7 +88,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.8
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -223,7 +223,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.03
+  m_Radius: 0.02
   m_Center: {x: 0, y: 0, z: 0.48}
 --- !u!1 &5379011342210534104
 GameObject:
@@ -5734,7 +5734,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.03
+  m_Radius: 0.02
   m_Center: {x: 0, y: 0, z: 0.48}
 --- !u!1 &5379011342652751153
 GameObject:
@@ -5857,6 +5857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e154bef089ef194598789af212b192e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  windAreaAudioSource: {fileID: 0}
+  windClip: {fileID: 8300000, guid: 36fd3d5d738502a4b96cace667012a8b, type: 3}
 --- !u!114 &5379011342652751162
 MonoBehaviour:
   m_ObjectHideFlags: 0

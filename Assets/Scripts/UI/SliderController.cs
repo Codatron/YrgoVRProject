@@ -15,7 +15,7 @@ public class SliderController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        slider.maxValue = sONectar.maxNectar;
+        slider.maxValue = sONectar.maxNectarToCollect;
         slider.value = sONectar.currentNectar;
     }
 }
