@@ -2696,7 +2696,7 @@ GameObject:
   - component: {fileID: 508346331}
   - component: {fileID: 508346335}
   - component: {fileID: 508346334}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: DropOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2780,8 +2780,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ded08153b3e5342b1bc31932483e68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nectarSO: {fileID: 11400000, guid: 4c141b44fa080314190316454ed46a29, type: 2}
   totalNectarCollected: 0
+  maxNectarToCollect: 10
+  nectarSO: {fileID: 11400000, guid: 4c141b44fa080314190316454ed46a29, type: 2}
   dialouge1: {fileID: 0}
   dialouge2: {fileID: 0}
 --- !u!65 &508346335
@@ -2795,8 +2796,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.68, y: 2, z: 0.69}
-  m_Center: {x: 0.00000005960464, y: 1.44, z: -0.00000008940697}
+  m_Size: {x: 0.68, y: 10.13, z: 0.69}
+  m_Center: {x: 0.00000005960464, y: 7.32, z: -0.00000008940697}
 --- !u!1 &511802254
 GameObject:
   m_ObjectHideFlags: 0
@@ -14760,38 +14761,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1474936987, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
-      propertyPath: m_Volume
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1474936987, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
-      propertyPath: MaxDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1474936987, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
-      propertyPath: MinDistance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1474936987, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 8428698190263087473, guid: c01f9cf236333bb4f8b8f5b6be53df7e, type: 2}
-    - target: {fileID: 1474936987, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
-      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1474936987, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
-      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1474936988, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1474936988, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 5379011342338782265, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
       propertyPath: m_InteractionManager
       value: 
@@ -14844,10 +14813,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5379011342652751161, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
-      propertyPath: windClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 36fd3d5d738502a4b96cace667012a8b, type: 3}
     - target: {fileID: 5379011342652751161, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
       propertyPath: windAreaAudioSource
       value: 

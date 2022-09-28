@@ -6,13 +6,13 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class PickUpNectar : MonoBehaviour
 {
-    public SONectar nectarSO;
     public ActionBasedController leftController;
     public ActionBasedController rightController;
 
+    private int currentNectar;
     private HandContoller handController;
     private VRInput vrInput;
-    private BeeStateSwitcher stateSwitcher; 
+    private BeeStateSwitcher stateSwitcher;
 
     private void Awake()
     {
@@ -23,12 +23,12 @@ public class PickUpNectar : MonoBehaviour
 
     private void Start()
     {
-        nectarSO.currentNectar = 0;
+        currentNectar = 0;
     }
 
     private void Update()
     {
-        if (nectarSO.currentNectar != 0)
+        if (currentNectar != 0)
         {
             stateSwitcher.CurrentBeeState = BeeState.CarryingPollen;
         }
@@ -53,7 +53,19 @@ public class PickUpNectar : MonoBehaviour
 
     private void NectarPickUp(int nectar)
     {
-        nectarSO.currentNectar += nectar;
-        Debug.Log("I'm collecting nectar: " + nectarSO.currentNectar);
+        //nectarSO.currentNectar += nectar;
+        //Debug.Log("I'm collecting nectar: " + nectarSO.currentNectar);
+        currentNectar += nectar;
+        Debug.Log("Current Nectar " + currentNectar);
+    }
+
+    public int GetCurrentNectar()
+    {
+        return currentNectar;
+    }
+
+    public void ResetNectar()
+    {
+        currentNectar = 0;
     }
 }
