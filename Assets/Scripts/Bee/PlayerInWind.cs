@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class PlayerInWind : MonoBehaviour
 {
-    bool inWindZoon = false;
+    bool inWindZone = false;
     GameObject windZone;
     Rigidbody rb;
+    [SerializeField] private AudioSource windAreaAudioSource;
+    [SerializeField] private AudioClip windClip;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
     {
-        if (inWindZoon)
+        if (inWindZone)
         {
-            rb.AddForce(windZone.GetComponent<WindArea>().direction * windZone.GetComponent<WindArea>().strength);
+            rb.AddForce(windZone.GetComponent<WindArea>().direction * windZone.GetComponent<WindArea>().strength, ForceMode.Impulse);
         }
     }
 
@@ -26,7 +28,8 @@ public class PlayerInWind : MonoBehaviour
         if (other.gameObject.CompareTag("WindArea"))
         { 
             windZone = other.gameObject;
-            inWindZoon = true;
+            inWindZone = true;
+            SFXHandler.PlayOneShot(windAreaAudioSource, windClip);
         }
     }
 
@@ -34,7 +37,7 @@ public class PlayerInWind : MonoBehaviour
     {
         if (other.gameObject.CompareTag("WindArea"))
         {
-            inWindZoon = false;
+            inWindZone = false;
         }
     }
 }

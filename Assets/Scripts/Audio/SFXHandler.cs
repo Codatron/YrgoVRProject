@@ -26,4 +26,13 @@ public static class SFXHandler
         source.pitch = randomPitch;
         source.PlayOneShot(clips[randomClip]);
     }
+
+    public static void PlayDelayed(AudioSource source, AudioClip clip, float minDelay, float maxDelay, float minPitch = 1.0f, float maxPitch = 1.0f)
+    {
+        float randomDelay = Random.Range(minDelay, maxDelay);
+        float randomPitch = Random.Range(minPitch, maxPitch);
+        source.pitch = randomPitch;
+        source.clip = clip;
+        source.PlayDelayed(randomDelay);
+    }
 }

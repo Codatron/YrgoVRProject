@@ -140,7 +140,8 @@ public class HandContoller : MonoBehaviour
     private bool IsBeeGrounded()
     {
         distanceToGround = originCollider.bounds.extents.y;
-        return Physics.Raycast(transform.position, -Vector3.up, distanceToGround + 0.15f);
+        LayerMask groundMask = LayerMask.GetMask("Ground");
+        return Physics.Raycast(transform.position, -Vector3.up, distanceToGround + 0.15f, groundMask);
     }
 
     private float ClampedTriggerValue(float triggerInput, float min, float max)

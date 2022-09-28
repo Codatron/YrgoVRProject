@@ -6,6 +6,10 @@ public class BirdAudio : MonoBehaviour
 {
     [SerializeField] private AudioClip birdSongClip;
     private AudioSource audioSource;
+    [SerializeField] private float minPlayDelay;
+    [SerializeField] private float maxPlayDelay;
+    [SerializeField] private float minPitch;
+    [SerializeField] private float maxPitch;
 
     private void Awake()
     {
@@ -15,6 +19,6 @@ public class BirdAudio : MonoBehaviour
 
     void Start()
     {
-        SFXHandler.Play(audioSource, birdSongClip, 0.8f, 1.0f);
+        SFXHandler.PlayDelayed(audioSource, birdSongClip, minPlayDelay, maxPlayDelay, minPitch, maxPitch);
     }
 }
