@@ -5887,7 +5887,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42ac396705a8014d8b203800dc8887d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nectarSO: {fileID: 11400000, guid: 4c141b44fa080314190316454ed46a29, type: 2}
   leftController: {fileID: 5379011342338782264}
   rightController: {fileID: 5379011342688738039}
 --- !u!1 &5379011342688737996
