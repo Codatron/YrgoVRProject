@@ -100,7 +100,6 @@ public class HandContoller : MonoBehaviour
                 break;
         }
 
-
         #region OldCode
         //if (GetRightTrigger() > 0.1f)
         //{
@@ -165,6 +164,11 @@ public class HandContoller : MonoBehaviour
     public void IncreaseDrag(float dragIncrease)
     {
         rb.drag += dragIncrease;
+    }
+
+    public void DecreaseDrag(float dragIncrease)
+    {
+        rb.drag -= dragIncrease;
     }
 
     private void RestoreDrag()

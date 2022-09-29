@@ -9,12 +9,10 @@ public class ReleaseNectar : MonoBehaviour
     public ActionBasedController leftController;
     public ActionBasedController rightController;
     
-    private VRInput vrInput;
     private PickUpNectar pickUpnectarScr;
 
     private void Awake()
     {
-        vrInput = new VRInput(rightController, leftController);
         pickUpnectarScr = GetComponent<PickUpNectar>();
     }
 

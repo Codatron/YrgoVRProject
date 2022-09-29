@@ -72,7 +72,14 @@ public class PickUpNectar : MonoBehaviour
         if (currentNectar > 0)
         {
             currentNectar -= 1;
+            handController.DecreaseDrag(dragIncrease);
         }
+        else
+        {
+            Debug.Log("No mmore nectar to drop.");
+            return;
+        }
+
         Debug.Log("Current Nectar " + currentNectar);
     }
 
