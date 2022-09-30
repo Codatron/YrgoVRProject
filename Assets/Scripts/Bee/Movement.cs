@@ -20,10 +20,15 @@ public class Movement
     public void Fly(Vector3 inputDirection, float flySpeed)
     {
         Vector3 movement = Vector3.zero;
-
-        if (inputDirection.magnitude > .15f)
+        
+        if (inputDirection.magnitude > 0.75f)
+        {
+            movement = inputDirection.normalized * inputDirection.magnitude * (flySpeed + 50.0f) * Time.deltaTime;
+        }
+        else if (inputDirection.magnitude > .15f)
+        {
             movement = inputDirection.normalized * inputDirection.magnitude * flySpeed * Time.deltaTime;
-
+        }
         else if (inputDirection.magnitude <= 0.15f && inputDirection.magnitude >= 0.05f)
             movement = Vector3.zero;
         

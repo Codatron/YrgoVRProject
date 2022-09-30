@@ -5899,6 +5899,7 @@ MonoBehaviour:
   leftController: {fileID: 5379011342338782264}
   rightController: {fileID: 5379011342688738039}
   dragIncrease: 0.5
+  currentNectar: 0
 --- !u!114 &913555307
 MonoBehaviour:
   m_ObjectHideFlags: 0

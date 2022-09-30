@@ -28,13 +28,16 @@ public class HandContoller : MonoBehaviour
     private Rigidbody rb;
     private Collider originCollider;
     private float distanceToGround;
+    [SerializeField] private float dragIncrease;
+    [SerializeField] private float dragDecrease;
+    [SerializeField] private float startDrag;
 
     private VRInput vrInput;
     private Movement newMovement;
     private BeeStateSwitcher stateSwitcher;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip beeFlightClip;
-    
+
     private void Awake()
     {
         rb = body.GetComponent<Rigidbody>();
@@ -48,12 +51,16 @@ public class HandContoller : MonoBehaviour
 
     private void OnEnable()
     {
+        PickUpNectar.onNectarPickup += IncreaseDrag;
         NectarDropOff.onNectarDrop += RestoreDrag;
+        GameManager.onNoMoreNectarToJettison += DecreaseDrag;
     }
 
     private void OnDisable()
     {
+        PickUpNectar.onNectarPickup -= IncreaseDrag;
         NectarDropOff.onNectarDrop -= RestoreDrag;
+        GameManager.onNoMoreNectarToJettison -= DecreaseDrag;
     }
 
     private void Start()
@@ -69,14 +76,14 @@ public class HandContoller : MonoBehaviour
         switch (stateSwitcher.CurrentBeeState)
         {
             case BeeState.Grounded:
-               if (vrInput.GetRightTrigger() > 0.1f)
+                if (vrInput.GetRightTrigger() > 0.1f)
                     newMovement.ChangeAltitude(Vector3.up, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));
                 audioSource.Stop();
                 break;
             case BeeState.Flying:
                 newMovement.Fly(GetFlyingDirection(), flySpeed);
                 if (vrInput.GetRightTrigger() > 0.1f)
-                    newMovement.ChangeAltitude(Vector3.up, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));    
+                    newMovement.ChangeAltitude(Vector3.up, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));
                 else if (vrInput.GetLeftTrigger() > 0.1f && !IsBeeGrounded())
                     newMovement.ChangeAltitude(Vector3.down, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .15f));
                 if (beeFlightClip != null && !IsBeeGrounded())
@@ -138,7 +145,7 @@ public class HandContoller : MonoBehaviour
     {
         distanceToGround = originCollider.bounds.extents.y;
         LayerMask groundMask = LayerMask.GetMask("Ground");
-        return Physics.Raycast(transform.position, -Vector3.up, distanceToGround + 0.15f, groundMask);
+        return Physics.Raycast(transform.position, -Vector3.up, distanceToGround + 0.1f, groundMask);
     }
 
     private float ClampedTriggerValue(float triggerInput, float min, float max)
@@ -161,18 +168,9 @@ public class HandContoller : MonoBehaviour
         return (rightController.transform.localPosition + leftController.transform.localPosition) - mainCamera.transform.localPosition;
     }
 
-    public void IncreaseDrag(float dragIncrease)
-    {
-        rb.drag += dragIncrease;
-    }
+    public void IncreaseDrag() => rb.drag += dragIncrease;
 
-    public void DecreaseDrag(float dragIncrease)
-    {
-        rb.drag -= dragIncrease;
-    }
+    public void DecreaseDrag() => rb.drag -= dragIncrease;
 
-    private void RestoreDrag()
-    {
-        rb.drag = 5.0f;
-    }
+    public void RestoreDrag() => rb.drag = startDrag;
 }

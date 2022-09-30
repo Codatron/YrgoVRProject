@@ -9,6 +9,8 @@ TagManager:
   - Flower
   - Nectar
   - StartFly
+  - LeftHand
+  - RightHand
   layers:
   - Default
   - TransparentFX
@@ -18,10 +20,10 @@ TagManager:
   - UI
   - Button
   - Ground
-  - 
-  - 
-  - 
-  - 
+  - RightHand
+  - LeftHand
+  - PlayerBody
+  - Nectar
   - 
   - 
   - 

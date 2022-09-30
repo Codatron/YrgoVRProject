@@ -19,17 +19,7 @@ public class NectarDropOff : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("I'm home");
-
-            PickUpNectar pickUpNectarScr = other.GetComponent<PickUpNectar>();
-            totalNectarCollected += pickUpNectarScr.GetCurrentNectar();
-            pickUpNectarScr.ResetNectar();
-
-            if (totalNectarCollected >= maxNectarToCollect)
-            {
-                Debug.Log("You have fulfilled your duty as a worker bee. Well done.");
-                // Game Over - Win Screen
-                //dialouge1.SetActive(true);
-            }
+            onNectarDrop?.Invoke();
         }
     }
 }
