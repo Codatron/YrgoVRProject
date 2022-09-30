@@ -10,7 +10,6 @@ public class Achievement
     private int experienceGain;
     private float speedMultiplier;
     private bool isCompleted;
-
     public Achievement(string message = "", int experienceGain = 15, float speedMultiplier = 1.125f)
     {
         this.message = message;
@@ -18,10 +17,5 @@ public class Achievement
         this.speedMultiplier = speedMultiplier;
 
         isCompleted = false;
-    }
-
-    public void Complete()
-    {
-        isCompleted = true;
     }
 }

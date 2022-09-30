@@ -2,10 +2,14 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class AchievementController : MonoBehaviour
 {
-    public AchievementMessages messages;
+    public Canvas canvas;
+    public TextMeshProUGUI achievementText;
+    public AchievementMessages achievementmessages;
+
     public static AchievementController Instance { get { return instance; } }
     private static AchievementController instance;
 
@@ -27,12 +31,14 @@ public class AchievementController : MonoBehaviour
 
     private void CreateAchievements()
     {
-        for (int i = 0; i < messages.nectarMessages.GetLength(0); i++)
-            nectarAchievements[i] = new Achievement(messages.nectarMessages[i]);
+        for (int i = 0; i < achievementmessages.nectarMessages.GetLength(0); i++)
+            nectarAchievements[i] = new Achievement(achievementmessages.nectarMessages[i]);
     }
 
-    public string DisplayMessage(int threshold, int index)
+    public void DisplayMessage(int threshold, int index, float displayTime = 3)
     {
-        return nectarAchievements[index].Message + threshold;
+        TextMeshProUGUI tmpText = Instantiate(achievementText, canvas.transform);
+        tmpText.text = nectarAchievements[index].Message + threshold;
+        Destroy(tmpText, displayTime);
     }
 }

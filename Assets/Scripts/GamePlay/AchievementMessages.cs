@@ -7,4 +7,5 @@ using UnityEngine;
 public class AchievementMessages : ScriptableObject
 {
     public string[] nectarMessages;
+    public int[] nectarThresholds;
 }

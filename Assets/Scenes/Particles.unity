@@ -237,6 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49468b7e4bed3c94582b8bcc8355cea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 647696514}
+  achievementText: {fileID: 6306478255398496202, guid: 94caee8ed0d11684794e3513c1ba1097, type: 3}
   messages: {fileID: 11400000, guid: a7d1b7e951db4a340b5bd327c55e0e04, type: 2}
 --- !u!4 &355725391
 Transform:
