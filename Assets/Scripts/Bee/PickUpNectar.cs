@@ -12,13 +12,10 @@ public class PickUpNectar : MonoBehaviour
     public ActionBasedController rightController;
     public static OnNectarPickup onNectarPickup;
 
-    [SerializeField] float dragIncrease;
-    private HandContoller handController;
     private VRInput vrInput;
 
     private void Awake()
     {
-        handController = GetComponent<HandContoller>();
         vrInput = new VRInput(rightController, leftController);
     }
 
