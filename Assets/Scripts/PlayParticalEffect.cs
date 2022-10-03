@@ -11,6 +11,10 @@ public class PlayParticalEffect : MonoBehaviour
     private ParticleSystem WindParticleSystem;
     [SerializeField]
     private float maxSpeed;
+    [SerializeField]
+    private AudioSource audioSource;
+    [SerializeField]
+    private AudioClip windAudio;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -22,6 +26,7 @@ public class PlayParticalEffect : MonoBehaviour
         if (other.gameObject.CompareTag("WindArea")) //&& playerRB.velocity.magnitude < maxSpeed)
         {
             WindParticleSystem.Play();
+            audioSource.PlayOneShot(windAudio);
         }
     }
 }

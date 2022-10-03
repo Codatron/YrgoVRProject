@@ -1,11 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public delegate void OnNoMoreNectarToJettison();
+    public enum GameStage
+    {
+        Tutorial,
+        BeginGame,
+        GameOver,
+        Flying,
+    }
 
 public class GameManager : MonoBehaviour
 {
+    public GameStage gameStage;
+
+    public static event Action startGame;
+
+
     public static OnNoMoreNectarToJettison onNoMoreNectarToJettison;
     [SerializeField] private int currentNectar;
     [SerializeField] private int totalNectarCollected;
@@ -13,6 +26,12 @@ public class GameManager : MonoBehaviour
 
     private int nectarValue;
     private BeeStateSwitcher stateSwitcher;
+
+    [SerializeField] private GameObject tutText;
+    [SerializeField] private GameObject gameOverScreen;
+
+    private HandContoller handContoller;
+
 
     private void OnEnable()
     {
@@ -31,6 +50,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         stateSwitcher = new BeeStateSwitcher(BeeState.Grounded);
+        gameStage = GameStage.Tutorial;
     }
 
     void Start()
@@ -50,6 +70,14 @@ public class GameManager : MonoBehaviour
         {
             stateSwitcher.CurrentBeeState = BeeState.Grounded;
         }
+
+        switch (gameStage)
+        {
+            case GameStage.Tutorial: BeginTutorial();  return;
+            case GameStage.BeginGame: BeginGame(); return;
+            case GameStage.GameOver: BeginGameOver(); return;
+            case GameStage.Flying: BeginFlying(); return;    
+        }   
     }
 
     private void AddNectar()
@@ -94,10 +122,37 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("You have fulfilled your duty as a worker bee. Well done.");
             ResetNectar();
-            // Game Over - Win Screen
-            //dialouge1.SetActive(true);
+            gameStage = GameStage.GameOver;
         }
 
         ResetNectar();
     }
+
+    private void BeginTutorial()
+    {
+        handContoller.stateSwitcher.CurrentBeeState = BeeState.NoMovement;
+        tutText.SetActive(true);
+    }
+
+    private void BeginGame()
+    {
+        handContoller.stateSwitcher.CurrentBeeState = BeeState.Grounded;
+    }
+
+    private void BeginGameOver()
+    {
+        //nomovment
+        handContoller.stateSwitcher.CurrentBeeState = BeeState.NoMovement;
+        //IFnecktar ui
+        gameOverScreen.SetActive(true);
+        //IFNot Necktar?
+    }
+
+    private void BeginFlying()
+    {
+        //Movment
+        handContoller.stateSwitcher.CurrentBeeState = BeeState.Grounded;
+        //disconect neckar pick up and gameover
+    }
+
 }

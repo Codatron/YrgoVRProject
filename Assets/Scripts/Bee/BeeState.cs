@@ -7,5 +7,6 @@ public enum BeeState
     OnFlower,
     Lifting,
     Descending,
-    CarryingPollen
+    CarryingPollen,
+    NoMovement
 }

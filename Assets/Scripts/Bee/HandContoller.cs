@@ -34,7 +34,7 @@ public class HandContoller : MonoBehaviour
 
     private VRInput vrInput;
     private Movement newMovement;
-    private BeeStateSwitcher stateSwitcher;
+    public BeeStateSwitcher stateSwitcher;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip beeFlightClip;
 
@@ -42,9 +42,9 @@ public class HandContoller : MonoBehaviour
     {
         rb = body.GetComponent<Rigidbody>();
         originCollider = body.GetComponent<Collider>();
+        newMovement = new Movement(rb);
 
         vrInput = new VRInput(rightController, leftController);
-        newMovement = new Movement(rb);
         stateSwitcher = new BeeStateSwitcher(BeeState.Grounded);
         audioSource.playOnAwake = false;
     }
@@ -54,6 +54,7 @@ public class HandContoller : MonoBehaviour
         PickUpNectar.onNectarPickup += IncreaseDrag;
         NectarDropOff.onNectarDrop += RestoreDrag;
         GameManager.onNoMoreNectarToJettison += DecreaseDrag;
+        
     }
 
     private void OnDisable()
@@ -61,6 +62,7 @@ public class HandContoller : MonoBehaviour
         PickUpNectar.onNectarPickup -= IncreaseDrag;
         NectarDropOff.onNectarDrop -= RestoreDrag;
         GameManager.onNoMoreNectarToJettison -= DecreaseDrag;
+       
     }
 
     private void Start()
@@ -103,6 +105,7 @@ public class HandContoller : MonoBehaviour
                 else if (vrInput.GetLeftTrigger() > 0.1f && !IsBeeGrounded())
                     newMovement.ChangeAltitude(Vector3.down, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));
                 break;
+            case BeeState.NoMovement: break;
             default:
                 break;
         }
@@ -173,4 +176,8 @@ public class HandContoller : MonoBehaviour
     public void DecreaseDrag() => rb.drag -= dragIncrease;
 
     public void RestoreDrag() => rb.drag = startDrag;
+
+    //public void StartMovement() => newMovement = new Movement(rb);
+
+
 }
