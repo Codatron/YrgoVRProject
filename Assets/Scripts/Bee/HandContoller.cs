@@ -105,7 +105,7 @@ public class HandContoller : MonoBehaviour
                 else if (vrInput.GetLeftTrigger() > 0.1f && !IsBeeGrounded())
                     newMovement.ChangeAltitude(Vector3.down, ClampedTriggerValue(vrInput.GetRightTrigger(), .1f, .35f));
                 break;
-            case BeeState.NoMovement: break;
+            //case BeeState.NoMovement: break;
             default:
                 break;
         }

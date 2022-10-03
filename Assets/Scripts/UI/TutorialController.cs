@@ -11,7 +11,7 @@ public class TutorialController : MonoBehaviour
     private void Awake()
     {
         tut1.SetActive(true);
-        tut2.SetActive(false);
+        //tut2.SetActive(false);
         gameManager = FindObjectOfType<GameManager>();
     }
 
@@ -24,5 +24,6 @@ public class TutorialController : MonoBehaviour
     public void ChangeGameState()
     {
         gameManager.gameStage = GameStage.BeginGame;
+        tut2.SetActive(false);
     }
 }

@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     {
         stateSwitcher = new BeeStateSwitcher(BeeState.Grounded);
         gameStage = GameStage.Tutorial;
+        Time.timeScale = 1.0f;
     }
 
     void Start()
@@ -73,10 +74,16 @@ public class GameManager : MonoBehaviour
 
         switch (gameStage)
         {
-            case GameStage.Tutorial: BeginTutorial();  return;
-            case GameStage.BeginGame: BeginGame(); return;
-            case GameStage.GameOver: BeginGameOver(); return;
-            case GameStage.Flying: BeginFlying(); return;    
+            case GameStage.Tutorial: BeginTutorial(); 
+                break;
+            case GameStage.BeginGame: BeginGame();
+                break;
+            case GameStage.GameOver: BeginGameOver();
+                break;
+            case GameStage.Flying: BeginFlying();
+                break;
+            default:
+                return;
         }   
     }
 
@@ -130,19 +137,20 @@ public class GameManager : MonoBehaviour
 
     private void BeginTutorial()
     {
-        handContoller.stateSwitcher.CurrentBeeState = BeeState.NoMovement;
-        tutText.SetActive(true);
+        //handContoller.stateSwitcher.CurrentBeeState = BeeState.NoMovement;
+        Time.timeScale = 0.0f;
+        //tutText.SetActive(true);
     }
 
     private void BeginGame()
     {
-        handContoller.stateSwitcher.CurrentBeeState = BeeState.Grounded;
+        //handContoller.stateSwitcher.CurrentBeeState = BeeState.Grounded;
+        Time.timeScale = 1.0f;
     }
 
     private void BeginGameOver()
     {
-        //nomovment
-        handContoller.stateSwitcher.CurrentBeeState = BeeState.NoMovement;
+        Time.timeScale = 0.0f;
         //IFnecktar ui
         gameOverScreen.SetActive(true);
         //IFNot Necktar?
