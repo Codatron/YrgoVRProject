@@ -26,7 +26,7 @@ public class PauseMenu : MonoBehaviour
     private void Awake()
     {
         inputActions = new PausMenu();
-        Time.timeScale = 1;
+        //menuPause.SetActive(false);
     }
 
     public void DisplayPauseMenu(InputAction.CallbackContext value)
