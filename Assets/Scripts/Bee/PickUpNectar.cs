@@ -26,6 +26,9 @@ public class PickUpNectar : MonoBehaviour
             if (vrInput.GetRightGrip() > 0.1f || vrInput.GetLeftGrip() > 0.1f)
             {
                 onNectarPickup?.Invoke();
+
+                //Destroy(other.GetComponent<Collider>());
+                //other.GetComponent<MeshRenderer>().enabled = false;
                 Destroy(other.gameObject);
             }
         }
