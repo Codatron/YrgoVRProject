@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
 
     public static event Action startGame;
 
-
     public static OnNoMoreNectarToJettison onNoMoreNectarToJettison;
     [SerializeField] private int currentNectar;
     [SerializeField] private int totalNectarCollected;
@@ -31,8 +30,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverScreen;
 
     private HandContoller handContoller;
-
-
     private void OnEnable()
     {
         PickUpNectar.onNectarPickup += AddNectar;
@@ -60,7 +57,6 @@ public class GameManager : MonoBehaviour
         currentNectar = 0;
         maxNectarToCollect = 10;
     }
-
     private void Update()
     {
         if (currentNectar != 0)
@@ -86,7 +82,6 @@ public class GameManager : MonoBehaviour
                 return;
         }   
     }
-
     private void AddNectar()
     {
         currentNectar += nectarValue;
@@ -117,8 +112,6 @@ public class GameManager : MonoBehaviour
     public void ResetNectar()
     {
         currentNectar = 0;
-        //handController.RestoreDrag();
-
     }
 
     public void AddTotalNectarCollected()
@@ -137,30 +130,28 @@ public class GameManager : MonoBehaviour
 
     private void BeginTutorial()
     {
-        //handContoller.stateSwitcher.CurrentBeeState = BeeState.NoMovement;
         Time.timeScale = 0.0f;
-        //tutText.SetActive(true);
+        tutText.SetActive(true);
     }
 
     private void BeginGame()
     {
-        //handContoller.stateSwitcher.CurrentBeeState = BeeState.Grounded;
         Time.timeScale = 1.0f;
     }
 
     private void BeginGameOver()
     {
         Time.timeScale = 0.0f;
-        //IFnecktar ui
         gameOverScreen.SetActive(true);
-        //IFNot Necktar?
     }
 
-    private void BeginFlying()
+    public void BeginFlying()
     {
+        gameOverScreen.SetActive(false);
         //Movment
-        handContoller.stateSwitcher.CurrentBeeState = BeeState.Grounded;
-        //disconect neckar pick up and gameover
+        Time.timeScale = 1.0f;
+        
+
     }
 
 }
