@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         stateSwitcher = new BeeStateSwitcher(BeeState.Grounded);
-        gameStage = GameStage.Tutorial;
+        gameStage = GameStage.BeginGame;
         Time.timeScale = 1.0f;
     }
 
