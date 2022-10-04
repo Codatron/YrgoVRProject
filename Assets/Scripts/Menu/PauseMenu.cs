@@ -10,6 +10,11 @@ public class PauseMenu : MonoBehaviour
     public GameObject menuPause;
     bool showPauseMenu = false;
     private PausMenu inputActions;
+    public GameObject howToPlayObject;
+    [SerializeField] private AudioClip menuClick;
+    [SerializeField] private AudioSource audioSource;
+
+
 
     private void OnEnable()
     {
@@ -48,16 +53,40 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartGame()
     {
+        PlayMenuSound();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
     }
 
     public void ExitGame()
     {
+        PlayMenuSound();
         Application.Quit();
     }
 
     public void GoToMainMenu()
     {
+        PlayMenuSound();
         SceneManager.LoadScene(0);
+    }
+
+    public void HowToPlay()
+    {
+        PlayMenuSound();
+        howToPlayObject.SetActive(true);
+        menuPause.SetActive(false);
+
+    }
+
+    public void GoBackToPause()
+    {
+        PlayMenuSound();
+        howToPlayObject.SetActive(false);
+        menuPause.SetActive(true);
+    }
+
+    public void PlayMenuSound()
+    {
+        SFXHandler.PlayOneShot(audioSource, menuClick);
     }
 }
