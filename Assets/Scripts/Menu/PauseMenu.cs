@@ -41,13 +41,13 @@ public class PauseMenu : MonoBehaviour
         if (!showPauseMenu)
         {
             menuPause.SetActive(false);
-            Time.timeScale = 1;
+            Time.timeScale = 1.0f;
         }
 
         if (showPauseMenu)
         {
             menuPause.SetActive(true);
-            Time.timeScale = 0;
+            Time.timeScale = 0.0f;
         }
     }
 

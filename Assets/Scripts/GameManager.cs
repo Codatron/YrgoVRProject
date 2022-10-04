@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         stateSwitcher = new BeeStateSwitcher(BeeState.Grounded);
-        gameStage = GameStage.BeginGame;
+        gameStage = GameStage.Tutorial;
         Time.timeScale = 1.0f;
     }
 
@@ -68,19 +68,19 @@ public class GameManager : MonoBehaviour
             stateSwitcher.CurrentBeeState = BeeState.Grounded;
         }
 
-        switch (gameStage)
-        {
-            case GameStage.Tutorial: BeginTutorial(); 
-                break;
-            case GameStage.BeginGame: BeginGame();
-                break;
-            case GameStage.GameOver: BeginGameOver();
-                break;
-            case GameStage.Flying: BeginFlying();
-                break;
-            default:
-                return;
-        }   
+        //switch (gameStage)
+        //{
+        //    case GameStage.Tutorial: BeginTutorial(); 
+        //        break;
+        //    case GameStage.BeginGame: BeginGame();
+        //        break;
+        //    case GameStage.GameOver: BeginGameOver();
+        //        break;
+        //    case GameStage.Flying: BeginFlying();
+        //        break;
+        //    default:
+        //        return;
+        //}   
     }
     private void AddNectar()
     {
@@ -122,7 +122,9 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("You have fulfilled your duty as a worker bee. Well done.");
             ResetNectar();
-            gameStage = GameStage.GameOver;
+            //gameStage = GameStage.GameOver;
+            BeginGameOver();
+
         }
 
         ResetNectar();
@@ -131,7 +133,6 @@ public class GameManager : MonoBehaviour
     private void BeginTutorial()
     {
         Time.timeScale = 0.0f;
-        tutText.SetActive(true);
     }
 
     private void BeginGame()
@@ -150,8 +151,6 @@ public class GameManager : MonoBehaviour
         gameOverScreen.SetActive(false);
         //Movment
         Time.timeScale = 1.0f;
-        
-
     }
 
 }
