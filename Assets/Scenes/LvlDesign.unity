@@ -38003,6 +38003,18 @@ PrefabInstance:
       propertyPath: m_LineLength
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5379011342722482392, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -35.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5379011342722482392, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -409.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5379011342722482392, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -654.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5379011342722482396, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
       propertyPath: m_Antialiasing
       value: 1
