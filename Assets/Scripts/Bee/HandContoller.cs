@@ -54,7 +54,6 @@ public class HandContoller : MonoBehaviour
         PickUpNectar.onNectarPickup += IncreaseDrag;
         NectarDropOff.onNectarDrop += RestoreDrag;
         GameManager.onNoMoreNectarToJettison += DecreaseDrag;
-        
     }
 
     private void OnDisable()
@@ -62,7 +61,6 @@ public class HandContoller : MonoBehaviour
         PickUpNectar.onNectarPickup -= IncreaseDrag;
         NectarDropOff.onNectarDrop -= RestoreDrag;
         GameManager.onNoMoreNectarToJettison -= DecreaseDrag;
-       
     }
 
     private void Start()

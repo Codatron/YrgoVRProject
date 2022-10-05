@@ -21,9 +21,17 @@ public class Movement
     {
         Vector3 movement = Vector3.zero;
         
-        if (inputDirection.magnitude > 0.75f)
+        if (inputDirection.magnitude > 1.0f)
         {
-            movement = inputDirection.normalized * inputDirection.magnitude * (flySpeed + 50.0f) * Time.deltaTime;
+            movement = inputDirection.normalized * inputDirection.magnitude * (flySpeed + 150.0f) * Time.deltaTime;
+        }
+        else if (inputDirection.magnitude > 0.85f)
+        {
+            movement = inputDirection.normalized * inputDirection.magnitude * (flySpeed + 100.0f) * Time.deltaTime;
+        }
+        else if (inputDirection.magnitude > 0.50f)
+        {
+            movement = inputDirection.normalized * inputDirection.magnitude * (flySpeed + 33.0f) * Time.deltaTime;
         }
         else if (inputDirection.magnitude > .15f)
         {
