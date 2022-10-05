@@ -4,6 +4,8 @@ using UnityEngine;
 using System;
 
 public delegate void OnNoMoreNectarToJettison();
+public delegate void OnAchievementRequirementMet(int collectedNectar);
+
     public enum GameStage
     {
         Tutorial,
@@ -19,6 +21,8 @@ public class GameManager : MonoBehaviour
     public static event Action startGame;
 
     public static OnNoMoreNectarToJettison onNoMoreNectarToJettison;
+    public static OnAchievementRequirementMet onRequirementMet;
+
     [SerializeField] private int currentNectar;
     [SerializeField] private int totalNectarCollected;
     [SerializeField] private int maxNectarToCollect;
@@ -51,12 +55,13 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
-    void Start()
+    private void Start()
     {
         nectarValue = 1;
         currentNectar = 0;
         maxNectarToCollect = 10;
     }
+
     private void Update()
     {
         if (currentNectar != 0)
@@ -117,6 +122,7 @@ public class GameManager : MonoBehaviour
     public void AddTotalNectarCollected()
     {
         totalNectarCollected += GetCurrentNectar();
+        onRequirementMet?.Invoke(totalNectarCollected);
 
         if (totalNectarCollected >= maxNectarToCollect)
         {
@@ -152,5 +158,4 @@ public class GameManager : MonoBehaviour
         //Movment
         Time.timeScale = 1.0f;
     }
-
 }

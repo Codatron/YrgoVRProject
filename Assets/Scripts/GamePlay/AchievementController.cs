@@ -21,6 +21,7 @@ public class AchievementController : MonoBehaviour
         {
             instance = this;
             CreateAchievements();
+            GameManager.onRequirementMet += DisplayMessage;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -35,10 +36,15 @@ public class AchievementController : MonoBehaviour
             nectarAchievements[i] = new Achievement(achievementmessages.nectarMessages[i]);
     }
 
-    public void DisplayMessage(int threshold, int index, float displayTime = 3)
+    private void DisplayMessage(int currentTotalNectar)
     {
-        TextMeshProUGUI tmpText = Instantiate(achievementText, canvas.transform);
-        tmpText.text = nectarAchievements[index].Message + threshold;
-        Destroy(tmpText, displayTime);
+        foreach (int index in achievementmessages.nectarThresholds)
+        {
+            if (currentTotalNectar == index)
+            {
+                TextMeshProUGUI tmpText = Instantiate(achievementText, canvas.transform);
+                tmpText.text = achievementmessages.nectarMessages[0] + index;
+            }
+        }
     }
 }
