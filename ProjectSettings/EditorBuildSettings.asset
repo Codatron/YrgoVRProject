@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene 1.unity
     guid: 56e8a466fd3f30644b8a19258b71f6b6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Markus.unity
     guid: 0de8c5272acd4d644a065afeecef008b
   - enabled: 1
