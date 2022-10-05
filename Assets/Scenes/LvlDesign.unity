@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 0122b6ad18963ed42b7beae08f3503ec, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 8a15fbd0e2f972f498392d66248f196f, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: c28a65c4cf6715744aebb5582354664a, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -19564,7 +19564,7 @@ Terrain:
   m_HeightmapMaximumLOD: 0
   m_ShadowCastingMode: 2
   m_DrawHeightmap: 1
-  m_DrawInstanced: 0
+  m_DrawInstanced: 1
   m_DrawTreesAndFoliage: 1
   m_StaticShadowCaster: 0
   m_ReflectionProbeUsage: 1
@@ -38576,15 +38576,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5379011342652751159, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 42
+      value: 40.079
       objectReference: {fileID: 0}
     - target: {fileID: 5379011342652751159, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 490.43
+      value: 495.602
       objectReference: {fileID: 0}
     - target: {fileID: 5379011342652751159, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 228
+      value: 229.92
       objectReference: {fileID: 0}
     - target: {fileID: 5379011342652751159, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -38644,15 +38644,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5379011342722482392, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -35.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5379011342722482392, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -409.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5379011342722482392, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -654.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5379011342722482396, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
       propertyPath: m_Antialiasing
