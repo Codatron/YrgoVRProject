@@ -239,6 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e154bef089ef194598789af212b192e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  windAreaAudioSource: {fileID: 0}
+  windClip: {fileID: 0}
 --- !u!54 &55643792
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -284,6 +286,8 @@ MonoBehaviour:
   nectarParticleSystem: {fileID: 880714940}
   WindParticleSystem: {fileID: 384357872}
   maxSpeed: 2
+  audioSource: {fileID: 0}
+  windAudio: {fileID: 0}
 --- !u!1 &202613500
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &302036181
 ParticleSystemRenderer:
   serializedVersion: 6
