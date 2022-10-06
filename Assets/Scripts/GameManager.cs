@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
         stateSwitcher = new BeeStateSwitcher(BeeState.Grounded);
         gameStage = GameStage.Tutorial;
         Time.timeScale = 0.0f;
+        gameOverScreen.SetActive(false);
     }
 
     private void Start()
@@ -131,8 +132,8 @@ public class GameManager : MonoBehaviour
         if (totalNectarCollected >= maxNectarToCollect)
         {
             Debug.Log("You have fulfilled your duty as a worker bee. Well done.");
+
             ResetNectar();
-            //gameStage = GameStage.GameOver;
             BeginGameOver();
 
         }
@@ -159,7 +160,6 @@ public class GameManager : MonoBehaviour
     public void BeginFlying()
     {
         gameOverScreen.SetActive(false);
-        //Movment
         Time.timeScale = 1.0f;
     }
 }
