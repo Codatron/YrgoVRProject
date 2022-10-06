@@ -6,6 +6,7 @@ public class TutorialController : MonoBehaviour
 {
     [SerializeField] private GameObject tut1;
     [SerializeField] private GameObject tut2;
+    [SerializeField] private GameObject tut3;
     GameManager gameManager;
     PauseMenu pauseMenu;
 
@@ -14,6 +15,7 @@ public class TutorialController : MonoBehaviour
         pauseMenu = FindObjectOfType<PauseMenu>();
         tut1.SetActive(true);
         tut2.SetActive(false);
+        tut3.SetActive(false);
         gameManager = FindObjectOfType<GameManager>();
     }
 
@@ -22,6 +24,13 @@ public class TutorialController : MonoBehaviour
         pauseMenu.PlayMenuSound();
         tut1.SetActive(false);
         tut2.SetActive(true);
+    }
+
+    public void ShowNextObject2()
+    {
+        pauseMenu.PlayMenuSound();
+        tut2.SetActive(false);
+        tut3.SetActive(true);
     }
 
     public void ChangeGameState()
