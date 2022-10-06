@@ -14,8 +14,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private AudioClip menuClick;
     [SerializeField] private AudioSource audioSource;
 
-
-
     private void OnEnable()
     {
         inputActions.Enable();
@@ -42,12 +40,14 @@ public class PauseMenu : MonoBehaviour
         {
             menuPause.SetActive(false);
             Time.timeScale = 1.0f;
+            AudioListener.pause = false;
         }
 
         if (showPauseMenu)
         {
             menuPause.SetActive(true);
             Time.timeScale = 0.0f;
+            AudioListener.pause = true;
         }
     }
 
