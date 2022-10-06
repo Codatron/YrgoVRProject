@@ -4091,7 +4091,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 289008421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.337, y: 495.769, z: 229.67}
+  m_LocalPosition: {x: 38.337, y: 495.308, z: 229.67}
   m_LocalScale: {x: 1, y: 0.219608, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16441,6 +16441,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528956026}
   m_CullTransparentMesh: 1
+--- !u!1 &1529144412 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2415031771163219692, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
+  m_PrefabInstance: {fileID: 5379011342490305107}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1538734582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20418,7 +20423,7 @@ MonoBehaviour:
   totalNectarCollected: 0
   maxNectarToCollect: 3
   tutText: {fileID: 992925380}
-  gameOverScreen: {fileID: 1320980402}
+  gameOverScreen: {fileID: 1529144412}
 --- !u!4 &1901663034
 Transform:
   m_ObjectHideFlags: 0
@@ -24522,7 +24527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5379011342652751159, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 496.573
+      value: 496.1
       objectReference: {fileID: 0}
     - target: {fileID: 5379011342652751159, guid: 8afa8438d3934ba4494754088a208bfb, type: 3}
       propertyPath: m_LocalPosition.z

@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     {
         nectarValue = 1;
         currentNectar = 0;
-        maxNectarToCollect = 10;
+        //maxNectarToCollect = 10;
     }
 
     private void Update()
