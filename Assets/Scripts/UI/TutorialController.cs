@@ -37,6 +37,6 @@ public class TutorialController : MonoBehaviour
     {
         pauseMenu.PlayMenuSound();
         gameManager.gameStage = GameStage.BeginGame;
-        tut2.SetActive(false);
+        tut3.SetActive(false);
     }
 }
