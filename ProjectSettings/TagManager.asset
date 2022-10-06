@@ -11,6 +11,7 @@ TagManager:
   - StartFly
   - LeftHand
   - RightHand
+  - CollisionAudio
   layers:
   - Default
   - TransparentFX
