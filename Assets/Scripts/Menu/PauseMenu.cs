@@ -89,4 +89,10 @@ public class PauseMenu : MonoBehaviour
     {
         SFXHandler.PlayOneShot(audioSource, menuClick);
     }
+
+    public void GoBackToGame()
+    {
+        menuPause.SetActive(false);
+        Time.timeScale = 1.0f;
+    }
 }
