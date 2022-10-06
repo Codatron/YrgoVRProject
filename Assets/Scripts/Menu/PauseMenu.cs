@@ -28,6 +28,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Awake()
     {
+        AudioListener.pause = false;
         inputActions = new PausMenu();
         //menuPause.SetActive(false);
     }
@@ -94,5 +95,6 @@ public class PauseMenu : MonoBehaviour
     {
         menuPause.SetActive(false);
         Time.timeScale = 1.0f;
+        AudioListener.pause = false;
     }
 }

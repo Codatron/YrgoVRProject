@@ -293,6 +293,10 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: ed74ced1c1ba3e94f85763fbc8bd44ac, type: 3}
+      propertyPath: m_TagString
+      value: CollisionAudio
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: ed74ced1c1ba3e94f85763fbc8bd44ac, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -317,7 +321,7 @@ MeshCollider:
   m_GameObject: {fileID: 26568999}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -1471,7 +1475,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 59285491}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.2999878, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1904,6 +1908,118 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7441432221526138026, guid: e4eb5f36452871943b1dc567710f84f8, type: 3}
+--- !u!1 &77125051
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 77125052}
+  - component: {fileID: 77125056}
+  - component: {fileID: 77125055}
+  - component: {fileID: 77125054}
+  - component: {fileID: 77125053}
+  m_Layer: 0
+  m_Name: default (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &77125052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77125051}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 796536379}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &77125053
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77125051}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: cfb4020dc8f8e794291ea5e25730fcf9, type: 3}
+--- !u!65 &77125054
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77125051}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.246603, y: 1.1654285, z: 0.29}
+  m_Center: {x: 6.300401, y: 0.9781713, z: 3.2}
+--- !u!23 &77125055
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77125051}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 116adf1c5a8031449867f8fe7573eaf3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &77125056
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77125051}
+  m_Mesh: {fileID: -2432090755550338912, guid: 145264860d6eff54e9e17f574d1fa5a0, type: 3}
 --- !u!1001 &79863827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9009,6 +9125,10 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: ed74ced1c1ba3e94f85763fbc8bd44ac, type: 3}
+      propertyPath: m_TagString
+      value: CollisionAudio
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: ed74ced1c1ba3e94f85763fbc8bd44ac, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -9033,7 +9153,7 @@ MeshCollider:
   m_GameObject: {fileID: 231088502}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -9918,6 +10038,10 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: ed74ced1c1ba3e94f85763fbc8bd44ac, type: 3}
+      propertyPath: m_TagString
+      value: CollisionAudio
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: ed74ced1c1ba3e94f85763fbc8bd44ac, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -9942,7 +10066,7 @@ MeshCollider:
   m_GameObject: {fileID: 349772007}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -16748,6 +16872,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair_coll
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e24d6bc08ce6f204682536dad7436b9e, type: 3}
+      propertyPath: m_TagString
+      value: CollisionAudio
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e24d6bc08ce6f204682536dad7436b9e, type: 3}
 --- !u!1 &502388406 stripped
@@ -16846,7 +16974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 795ae1cc6e607ab48a7e72263fa03674, type: 3}
       propertyPath: m_TagString
-      value: CollisionAudio
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 795ae1cc6e607ab48a7e72263fa03674, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -17601,6 +17729,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e24d6bc08ce6f204682536dad7436b9e, type: 3}
       propertyPath: m_Name
       value: chair_coll
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e24d6bc08ce6f204682536dad7436b9e, type: 3}
+      propertyPath: m_TagString
+      value: CollisionAudio
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e24d6bc08ce6f204682536dad7436b9e, type: 3}
@@ -20125,6 +20257,10 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 145264860d6eff54e9e17f574d1fa5a0, type: 3}
+      propertyPath: m_TagString
+      value: CollisionAudio
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 145264860d6eff54e9e17f574d1fa5a0, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -20149,10 +20285,10 @@ BoxCollider:
   m_GameObject: {fileID: 796536380}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 9.246603, y: 1.1654285, z: 0.25974885}
-  m_Center: {x: 6.300401, y: 0.9781713, z: 3.1675785}
+  m_Size: {x: 9.246603, y: 1.1654285, z: 0.29}
+  m_Center: {x: 6.300401, y: 0.9781713, z: 3.2}
 --- !u!64 &796536382
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20162,7 +20298,7 @@ MeshCollider:
   m_GameObject: {fileID: 796536380}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -25733,6 +25869,10 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: f2df4ee1214466349b3d5e5a7f94c1fc, type: 3}
+      propertyPath: m_TagString
+      value: CollisionAudio
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: f2df4ee1214466349b3d5e5a7f94c1fc, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -25757,7 +25897,7 @@ MeshCollider:
   m_GameObject: {fileID: 1266882408}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -26197,6 +26337,10 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: f2df4ee1214466349b3d5e5a7f94c1fc, type: 3}
+      propertyPath: m_TagString
+      value: CollisionAudio
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: f2df4ee1214466349b3d5e5a7f94c1fc, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -26221,7 +26365,7 @@ MeshCollider:
   m_GameObject: {fileID: 1295328515}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -38635,6 +38779,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7493452712532843163, guid: fbec3bf6b31f8a245912940fcb99a143, type: 3}
   m_PrefabInstance: {fileID: 1553370922}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1560687759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1560687760}
+  - component: {fileID: 1560687761}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1560687760
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560687759}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -122.5, y: 0, z: 225.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2118144273}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1560687761
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560687759}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 144.18, y: 64.21, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1563111343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38712,7 +38901,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 103df549f56278449a770bc4c4725802, type: 3}
       propertyPath: m_TagString
-      value: CollisionAudio
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 103df549f56278449a770bc4c4725802, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -39064,6 +39253,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7690cdbdc4b5b4546aecd7c234205520, type: 3}
       propertyPath: m_Name
       value: table_coll
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7690cdbdc4b5b4546aecd7c234205520, type: 3}
+      propertyPath: m_TagString
+      value: CollisionAudio
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7690cdbdc4b5b4546aecd7c234205520, type: 3}
@@ -42734,6 +42927,10 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: f2df4ee1214466349b3d5e5a7f94c1fc, type: 3}
+      propertyPath: m_TagString
+      value: CollisionAudio
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: f2df4ee1214466349b3d5e5a7f94c1fc, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -42758,7 +42955,7 @@ MeshCollider:
   m_GameObject: {fileID: 1933936658}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -44834,6 +45031,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 35666a2ec2b0ab841aca840371d54485, type: 3}
   m_PrefabInstance: {fileID: 2111827710}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2118144272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2118144273}
+  m_Layer: 0
+  m_Name: PallKrageCollsionCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2118144273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118144272}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 58.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1560687760}
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2123239055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45009,7 +45238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 795ae1cc6e607ab48a7e72263fa03674, type: 3}
       propertyPath: m_TagString
-      value: CollisionAudio
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 795ae1cc6e607ab48a7e72263fa03674, type: 3}
       propertyPath: m_StaticEditorFlags
