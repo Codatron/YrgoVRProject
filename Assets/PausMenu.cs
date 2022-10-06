@@ -41,7 +41,7 @@ public partial class @PausMenu : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d0c52ca9-f457-452b-9b8e-13ddd039d119"",
-                    ""path"": ""<XRController>{LeftHand}/menu"",
+                    ""path"": ""<XRController>{LeftHand}/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
