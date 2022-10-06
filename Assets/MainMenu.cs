@@ -8,12 +8,15 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject ctrlImage;
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject creditsImage;
+    [SerializeField] private AudioClip menuClick;
+    [SerializeField] private AudioSource audioSource;
 
     private void Awake()
     {
         mainMenu.SetActive(true);
         ctrlImage.SetActive(false);
         creditsImage.SetActive(false);
+        Time.timeScale = 0.0f;
     }
     public void StartGame()
     {
@@ -47,5 +50,10 @@ public class MainMenu : MonoBehaviour
     {
         creditsImage.SetActive(false);
         mainMenu.SetActive(true);
+    }
+
+    public void PlayMenuSound()
+    {
+        SFXHandler.PlayOneShot(audioSource, menuClick);
     }
 }
