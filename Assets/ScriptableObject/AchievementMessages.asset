@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nectarMessages:
   - Nectar Collected
-  nectarThresholds: 050000000a00000019000000320000004b0000006400000096000000c80000002c01000090010000f4010000
+  nectarThresholds: 050000000a0000000f00000014000000
