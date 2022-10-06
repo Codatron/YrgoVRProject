@@ -5,18 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/BeeHive.unity
-    guid: 8f5af3c44c9aff84eb93baf39dc29121
-  - enabled: 0
-    path: Assets/Scenes/MergeScenes.unity
-    guid: 0f45f1bc1bfa92e49a7fa62360f34197
-  - enabled: 0
-    path: Assets/Scenes/SampleScene 1.unity
-    guid: 56e8a466fd3f30644b8a19258b71f6b6
-  - enabled: 0
-    path: Assets/Scenes/Markus.unity
-    guid: 0de8c5272acd4d644a065afeecef008b
+  - enabled: 1
+    path: Assets/Scenes/MenuScene.unity
+    guid: aae90af8e4b1cb0438b6c9d12a47846e
   - enabled: 1
     path: Assets/Scenes/LvlDesign.unity
     guid: 6e9711f5ee829344e95ebcf70f775eaa
